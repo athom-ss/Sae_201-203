@@ -1,0 +1,174 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: rgb(221, 221, 221);
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+}
+
+header {
+    background-color: white;
+    padding: 2%;
+    margin-top: 0;
+}
+
+.navbar {
+    background-color: #2F2A86;
+    padding: 15px;
+    text-align: center;
+    margin-bottom: 4%;
+}
+
+.navbar ul {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    gap: 40px; /* Ecart entre les parties du menu */
+    margin: 0;
+    padding: 0;
+}
+
+.navbar ul li {
+    display: inline;
+}
+
+.navbar ul li a {
+    text-decoration: none;
+    color: white;
+    font-size: 130%;
+    font-weight: bold;
+    padding: 50px;    /* Ecart entres les parties du menu */
+    transition: 0.3s;
+}
+
+.navbar ul li a:hover {
+    color: #c4c4c4;
+}
+
+
+
+header img {
+    width: 15%;
+}
+
+/* Conteneur pour le formulaire et l'image */
+.conteneur-formulaire {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start; /* Aligne les éléments en haut */
+    margin-top: 3%; /* Ajout d'une marge en haut pour espacer un peu du reste de la page */
+    margin-left: 9%;
+    margin-right: 9%;
+}
+
+/* Formulaire */
+.formulaire {
+    width: 60%; /* Largeur du formulaire */
+}
+
+
+/* Image */
+.droite img {
+    margin-top: 10%;
+    width: 100%; /* Largeur de l'image (ajuste selon tes préférences) */
+    border-radius: 8px; /* Arrondir les coins de l'image si tu veux */
+}
+
+.droite {
+    margin-top: 2%;
+    margin-left: 2%;
+    background-color: #f5f5f5;  /* Couleur de fond douce */
+    padding: 5%;              /* Espacement intérieur */
+    border-radius: 10px;        /* Coins arrondis */
+    text-align: center;         /* Centrage du texte */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Légère ombre portée */
+}
+
+.droite h2 {
+    font-size: 2em;
+    margin-bottom: 10px;
+    color: #003366; /* Couleur de l'université ou quelque chose de pro */
+}
+
+.droite h4 {
+    font-size: 1.2em;
+    color: #555;
+}
+
+
+form {
+    background-color: white;
+    padding-left: 4%;
+    padding-right: 4%;
+    padding-top: 3.5%;
+    padding-bottom: 3.5%;
+    border-radius: 8px;
+    width: 100%;
+    margin: auto;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+form h2 {
+    text-align: center;
+}
+
+
+#insc_hauteur {
+    margin-top: 5%;
+}
+
+label {
+    margin-left: 2%;
+    font-weight: bold;
+    display: block;
+    margin-top: 10px;
+}
+
+a {
+    margin-left: 30%;
+    color: red;
+    font-size: 90%;
+    text-decoration: none;
+}
+
+h5 {
+    text-align: center;
+}
+
+a:hover {
+    color: rgb(114, 1, 1);
+    text-decoration: underline;
+}
+
+input[type="text"],
+input[type="date"],
+input[type="number"],
+input[type="password"],
+select, textarea {
+    width: 100%;
+    padding: 8px;
+    margin-top: 5px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+input[type="submit"] {
+    background: rgb(39, 69, 174);
+    color: white;
+    padding: 12px;
+    width: 100%;
+    border-radius: 10px;
+    margin-top: 15px;
+    cursor: pointer;
+    font-size: 107%;
+}
+
+input[type="submit"]:hover {    
+    background: rgb(33, 14, 101);
+}
