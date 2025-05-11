@@ -1,0 +1,134 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+header {
+    background-color: #2F2A86;
+    padding: 1.4%;
+    width: 100%;
+}
+
+.images-header {
+    display: flex;
+    align-items: center;
+}
+
+.logo_univ img {
+    width: 16%;
+}
+
+.navbar {
+    display: flex;
+    gap: 2%;
+    padding: 0.7%;
+    background-color: #26236b;
+    align-items: center;
+}
+
+.navbar a {
+    margin-left: 6%;
+    color: white;
+    font-size: 130%;
+    font-weight: bold;
+    text-decoration: none;
+    transition: background-color 0.8s, color 0.8s;
+    padding: 0.7% 1.7%;
+    border-radius: 0.7em;
+}
+
+.navbar a:hover {
+    background-color: white;
+    color: #2F2A86;
+}
+
+.conteneur-formulaire {
+    display: flex;
+    justify-content: center;
+    margin: 3% 9%;
+}
+
+form {
+    background-color: white;
+    padding: 3.5% 4%;
+    border-radius: 8px;
+    width: 30%;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+form h2 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+/* Champs du formulaire */
+label {
+    display: block;
+    margin-top: 10px;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+input[type="text"],
+input[type="datetime-local"],
+input[type="number"],
+input[type="password"],
+input[type="button"],
+select,
+textarea {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+button.btn-valider {
+    background: rgb(39, 69, 174);
+    color: white;
+    padding: 12px;
+    width: 100%;
+    border: none;
+    border-radius: 10px;
+    margin-top: 15px;
+    cursor: pointer;
+    font-size: 107%;
+
+}
+
+button.btn-valider:hover {
+    background: rgb(33, 14, 101);
+}
+
+/* Lien d'inscription */
+form a {
+    display: block;
+    text-align: center;
+    margin-top: 10px;
+    color: red;
+    font-size: 90%;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+form a:hover {
+    color: rgb(114, 1, 1);
+    text-decoration: underline;
+}
+
+#insc_hauteur {
+    margin-top: 5%;
+}
+
+.img_compte img {
+    width: 8%;
+    margin-left: 98%;
+}
