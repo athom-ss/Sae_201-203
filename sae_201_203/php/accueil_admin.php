@@ -9,15 +9,16 @@
 
 <header>
   <div class="images-header">
-    <a href="accueil.php" class="logo_univ">
+    <a href="accueil_admin.php" class="logo_univ">
       <img src="../images/logo_univ_eiffel_blanc.png" alt="logo_header">
     </a>
-    <a href="compte.php" class="img_compte">
+    <a href="compte_admin.php" class="img_compte">
       <img src="../images/compte.png" alt="mon_compte">
     </a>
   </div>
 </header>
 <body>
+  <h1>ACCUEIL ADMIN</h1>
 
 
 

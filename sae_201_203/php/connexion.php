@@ -1,95 +1,130 @@
+<?php
+session_start();
+require_once "connexion_base.php";
+
+$erreur = '';
+
+if ($_SERVER["REQUEST_METHOD"] === "POST") {
+    $mail = $_POST['mail_connexion'] ?? '';
+    $mdp = $_POST['mdp'] ?? '';
+
+    try {
+        $sql = "SELECT * FROM inscription WHERE mail = :mail AND mot_de_passe = :mdp";
+        $stmt = $pdo->prepare($sql);
+        $stmt->execute([
+            ':mail' => $mail,
+            ':mdp' => $mdp
+        ]);
+        $utilisateur = $stmt->fetch(PDO::FETCH_ASSOC);
+
+        if ($utilisateur) {
+            $_SESSION['user'] = [
+                'id' => $utilisateur['id'],
+                'mail' => $utilisateur['mail'],
+                'pseudo' => $utilisateur['pseudo'],
+                'role' => $utilisateur['role_personne'],
+                'prenom' => $utilisateur['prenom'],
+                'num' => $utilisateur['num'],
+                ':statut' => $utilisateur['statut']
+            ];
+
+            if ($utilisateur['role_personne'] === 'Administrateur') {
+                header("Location: accueil_admin.php");
+            } else {
+                header("Location: accueil.php");
+            }
+            exit;
+        } else {
+            $erreur = "❌ Mail ou mot de passe incorrect.";
+        }
+
+    } catch (PDOException $e) {
+        $erreur = "❌ Erreur technique : veuillez réessayer plus tard.";
+        error_log("Erreur connexion: " . $e->getMessage());
+    }
+}
+?>
+
 <!DOCTYPE html>
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../css/style.css?v=<?= time(); ?>"> <!--  POUR PAS DEVOIR REFAIRE UN CSS -->
-    <title>Connexion</title>
+    <title>Connexion - Université Gustave Eiffel</title>
+    <link rel="stylesheet" href="../css/style_eth.css?v=<?= time(); ?>">
 </head>
-
-<header>
-    <div class="images-header">
-        <a href="accueil.php" class="logo_univ">
-            <img src="../images/logo_universite.png" alt="logo_header">
-        </a>
-    </div>
-</header>
 <body>
-    <br><br><br><br>
-    <div class="conteneur-formulaire">
-        <form action="connexion.php" method="POST">
 
-            <label for="mail_connexion">Mail Universitaire :</label>
-            <input id="mail_connexion" type="text" name="mail_connexion" placeholder="Mail Universitaire"><br><br>
+<header class="header">
+    <img src="../images/logo_univ_eiffel_blanc.png"
+         alt="Université Gustave Eiffel" class="logo-header">
+</header>
 
-            <label for="mdp">Mot de passe :</label> <br>
-            <input id="mdp" type="password" name="mdp" placeholder="Mot de passe"><br><br>
+<div class="login-wrapper">
+    <form class="login-box" method="POST" action="">
+        <div class="login-header">
+            <img src="../images/logo_univ_blanc.png" alt="logo">
+            <strong>Service central d’authentification</strong>
+        </div>
 
-            <button type="submit" class="btn-valider">Valider</button> <br> <br>
-            <h5>Vous n'avez pas encore de compte ?</h5> <br>
-            <a href="../php/inscription.php">Inscrivez-vous</a>
-        </form>
+        <?php if (!empty($erreur)) echo "<p class='error-message'>$erreur</p>"; ?>
+
+        <input type="email" name="mail_connexion" placeholder="Email :" required>
+        <input type="password" name="mdp" placeholder="Mot de passe :" required>
+        <button type="submit">Se connecter</button>
+
+        <hr class="divider">
+
+        <a href="../php/inscription.php" class="register-link">Se créer un compte ?</a>
+        <p class="small-text">Pour des raisons de sécurité, 
+            veuillez vous déconnecter et fermer votre navigateur 
+            lorsque vous avez fini d'accéder aux services authentifiés.</p>
+    </form>
+</div>
+
+<footer class="footer">
+    <div class="footer-column">
+        <img src="../images/logo_univ_eiffel_blanc.png" alt="Université Gustave Eiffel" class="logo-footer">
+        <p>5 boulevard Descartes</p>
+        <p>Champs-sur-Marne</p>
+        <p>77454 Marne-la-Vallée cedex 2</p>
+        <p>Téléphone : +33 1 60 95 75 00</p>
     </div>
+
+    <div class="footer-column">
+        <h4>Liens utiles</h4>
+        <a href="#">Données personnelles</a>
+        <a href="#">Accès aux documents administratifs</a>
+        <a href="#">Marchés publics</a>
+        <a href="#">Mentions légales</a>
+    </div>
+
+    <div class="footer-column">
+        <h4>Informations pratiques</h4>
+        <a href="#">Annuaire</a>
+        <a href="#">Plan d'accès</a>
+        <a href="#">Espace presse</a>
+        <a href="#">Restauration</a>
+    </div>
+
+    <div class="footer-column">
+        <h4>Réseaux sociaux</h4>
+        <a href="#"><img src="../images/logo_instagram.png" alt="Instagram"></a>
+        <a href="#"><img src="../images/logo_linkedin.png" alt="Linkedin"></a>
+        <a href="#"><img src="../images/logo_facebook.png" alt="Facebook"></a>
+        <a href="#"><img src="../images/logo_youtube.png" alt="Youtube"></a>
+        <a href="#"><img src="../images/logo_bluesky.png" alt="Bluesky"></a>
+    </div>
+</footer>
+
+<div class="footer-bottom">
+    <div class="footer-bottom-links">
+        <a href="#">Mentions légales</a>
+        <span>|</span>
+        <a href="#">Politique cookies</a>
+        <span>|</span>
+        <a href="#">Contact</a>
+    </div>
+</div>
+
 </body>
 </html>
-
-<?php
-require_once "connexion_base.php"; // Connexion à la base
-
-// Initialisation de la session et des variables
-session_start();
-$erreur = '';
-
-// Si l'utilisateur est déjà connecté, redirection vers l'accueil
-if (isset($_SESSION['user'])) {
-    header("Location: accueil.php");
-    exit;
-}
-
-// Traitement du formulaire
-if ($_SERVER["REQUEST_METHOD"] === "POST") {
-    // Nettoyage des inputs
-    $mail = trim($_POST["mail_connexion"] ?? '');
-    $mdp = $_POST["mdp"] ?? '';
-
-    // Validation des champs
-    if (empty($mail) || empty($mdp)) {
-        $erreur = "❌ Veuillez remplir tous les champs.";
-    } else {
-        try {
-            // Recherche de l'utilisateur
-            $sql = "SELECT * FROM inscription WHERE mail = :mail";
-            $stmt = $pdo->prepare($sql);
-            $stmt->execute([':mail' => $mail]);
-            $utilisateur = $stmt->fetch(PDO::FETCH_ASSOC);
-
-            // Vérification des identifiants
-            if ($utilisateur) {
-                // Comparaison directe du mot de passe (à remplacer par password_verify si vous hashiez les mdp)
-                if ($utilisateur['mot_de_passe'] === $mdp) {
-                    // Création de la session
-                    $_SESSION['user'] = [
-                        'id' => $utilisateur['id'], // Important pour compte.php
-                        'mail' => $utilisateur['mail'],
-                        'pseudo' => $utilisateur['pseudo'],
-                        'role' => $utilisateur['role_personne'],
-                        'prenom' => $utilisateur['prenom'] // Utile pour l'affichage
-                    ];
-                    
-                    // Redirection vers l'accueil
-                    header("Location: accueil.php");
-                    exit;
-                } else {
-                    $erreur = "❌ Mot de passe incorrect.";
-                }
-            } else {
-                $erreur = "❌ Aucun compte trouvé avec cet email.";
-            }
-            
-        } catch (PDOException $e) {
-            $erreur = "❌ Erreur technique : Veuillez réessayer plus tard.";
-            error_log("Erreur connexion: " . $e->getMessage()); // Log pour le débogage
-        }
-    }
-}
-?>

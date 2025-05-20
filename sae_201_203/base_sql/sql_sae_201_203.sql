@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1
--- Généré le : lun. 05 mai 2025 à 22:35
+-- Généré le : mar. 20 mai 2025 à 15:02
 -- Version du serveur : 10.4.32-MariaDB
--- Version de PHP : 8.2.12
+-- Version de PHP : 8.0.30
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -18,7 +18,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Base de données : `sae_201_203`
+-- Base de données : `sql_sae_201_203`
 --
 
 -- --------------------------------------------------------
@@ -36,8 +36,21 @@ CREATE TABLE `inscription` (
   `annee_naissance` date DEFAULT NULL,
   `adresse_postale` varchar(50) DEFAULT NULL,
   `role_personne` varchar(50) DEFAULT NULL,
-  `mot_de_passe` varchar(50) DEFAULT NULL
+  `mot_de_passe` varchar(50) DEFAULT NULL,
+  `num` int(11) DEFAULT NULL,
+  `statut` varchar(15) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Déchargement des données de la table `inscription`
+--
+
+INSERT INTO `inscription` (`id`, `mail`, `pseudo`, `nom`, `prenom`, `annee_naissance`, `adresse_postale`, `role_personne`, `mot_de_passe`, `num`, `statut`) VALUES
+(16, '2', '2', '2', '2', '2222-02-22', '2', 'Etudiant', '2', 2, NULL),
+(17, '3', '3', '3', '3', '3333-03-31', '3', 'Etudiant', '3', 3, NULL),
+(18, '4', '4', '4', '4', '9123-05-04', '4565', 'Administrateur', '123456', 4, NULL),
+(19, 'kobqzduigzq@gmail.com', 'HJHjhd', 'jhkhkhkj', 'Liam', '8778-05-20', 'GUKYfukygsu', 'Etudiant', 'JIHfuqhfiqf', 289689, 'attente'),
+(20, 'fefnjqfzq@gmail.com', 'hibih', 'hhihi', 'hihiuh', '2245-02-22', 'qfqfqzfqzf', 'Etudiant', '454654645', 455464, 'attente');
 
 -- --------------------------------------------------------
 
@@ -72,19 +85,22 @@ INSERT INTO `materiel` (`id_materiel`, `ref_materiel`, `designation`, `image_mat
 
 CREATE TABLE `reservations` (
   `nom_salle` varchar(15) DEFAULT NULL,
-  `date_reservation` date DEFAULT NULL,
-  `heure_reservation` varchar(15) DEFAULT NULL,
-  `id` int(11) NOT NULL
+  `id` int(11) NOT NULL,
+  `datetime_debut` datetime DEFAULT NULL,
+  `datetime_fin` datetime DEFAULT NULL,
+  `num_carte_reservation` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Déchargement des données de la table `reservations`
 --
 
-INSERT INTO `reservations` (`nom_salle`, `date_reservation`, `heure_reservation`, `id`) VALUES
-('B202', '2000-01-01', '08:30 - 10:30', 1),
-('123', '2022-02-20', '08:30 - 10:30', 2),
-('B202', '1010-01-01', '08:30 - 10:30', 3);
+INSERT INTO `reservations` (`nom_salle`, `id`, `datetime_debut`, `datetime_fin`, `num_carte_reservation`) VALUES
+('B202', 1, NULL, NULL, NULL),
+('123', 2, NULL, NULL, NULL),
+('B202', 3, NULL, NULL, NULL),
+('1', 4, '2001-01-01 05:05:00', '2002-02-02 06:06:00', 2),
+('1', 5, '2008-05-05 08:08:00', '0555-05-06 04:04:00', 3);
 
 -- --------------------------------------------------------
 
@@ -97,9 +113,10 @@ CREATE TABLE `reservations_materiel` (
   `ref_materiel` varchar(50) DEFAULT NULL,
   `designation` varchar(50) DEFAULT NULL,
   `type_materiel` varchar(50) DEFAULT NULL,
-  `date_reservation_materiel` date DEFAULT NULL,
-  `heure_reservation_materiel` varchar(15) DEFAULT NULL,
-  `id` int(11) NOT NULL
+  `id` int(11) NOT NULL,
+  `num_carte_reservation` varchar(255) DEFAULT NULL,
+  `datetime_reservation` datetime DEFAULT NULL,
+  `datetime_reservation_fin` datetime DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -154,13 +171,13 @@ ALTER TABLE `reservations_materiel`
 -- AUTO_INCREMENT pour la table `inscription`
 --
 ALTER TABLE `inscription`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 
 --
 -- AUTO_INCREMENT pour la table `reservations`
 --
 ALTER TABLE `reservations`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT pour la table `reservations_materiel`

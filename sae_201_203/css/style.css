@@ -6,14 +6,14 @@
 
 body {
     font-family: Arial, sans-serif;
-    background-color: rgb(221, 221, 221);
+    background-color: white;
     display: flex;
     flex-direction: column;
     min-height: 100vh;
 }
 
 header {
-    background-color: white;
+    background-color: #2F2A86;
     padding: 1.4%;
     width: 100%;
 }
@@ -31,7 +31,7 @@ header {
     display: flex;
     gap: 2%;
     padding: 0.7%;
-    background-color: #2F2A86;
+    background-color: #26236b;
     align-items: center;
 }
 
@@ -79,9 +79,10 @@ label {
 }
 
 input[type="text"],
-input[type="date"],
+input[type="datetime-local"],
 input[type="number"],
 input[type="password"],
+input[type="button"],
 select,
 textarea {
     width: 100%;
@@ -90,7 +91,6 @@ textarea {
     border-radius: 5px;
 }
 
-/* Bouton principal */
 button.btn-valider {
     background: rgb(39, 69, 174);
     color: white;
@@ -101,7 +101,7 @@ button.btn-valider {
     margin-top: 15px;
     cursor: pointer;
     font-size: 107%;
-    transition: background 0.3s;
+
 }
 
 button.btn-valider:hover {
@@ -124,13 +124,11 @@ form a:hover {
     text-decoration: underline;
 }
 
-/* Autres */
 #insc_hauteur {
     margin-top: 5%;
 }
 
-/* Image compte (si utilisée ailleurs) */
 .img_compte img {
-    width: 20%;
-    margin-left: auto;
+    width: 8%;
+    margin-left: 98%;
 }

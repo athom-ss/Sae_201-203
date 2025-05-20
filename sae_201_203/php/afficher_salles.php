@@ -7,13 +7,11 @@ try {
     echo "<br>";
     echo "<br>";
     echo "<br>";
-    echo "<table border='1' cellpadding='10' cellspacing='0' style='border-collapse: collapse; width: 100%;'>";
+    echo "<table border='4' cellpadding='10' cellspacing='0' style='border-collapse: collapse; width: 50%; margin-left: 25%;'>";
     echo "<thead style='background-color: #f2f2f2;'>
             <tr>
                 <th>Nom de la salle</th>
                 <th>Type de salle</th>
-                <th>Date de réservation</th>
-                <th>Heure de réservation</th>
             </tr>
           </thead>";
     echo "<tbody>";
@@ -21,8 +19,6 @@ try {
         echo "<tr>
                 <td>{$row['nom_salle']}</td>
                 <td>{$row['type_salle']}</td>
-                <td>{$row['date_reservation']}</td>
-                <td>{$row['heure_reservation']}</td>
               </tr>";
     }
     echo "</tbody></table>";

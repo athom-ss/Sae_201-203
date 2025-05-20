@@ -1,5 +1,5 @@
 <?php
-require_once "connexion_base.php"; // Inclusion de la connexion
+require_once "connexion_base.php";
 
 try {
     $sql = "SELECT * FROM materiel

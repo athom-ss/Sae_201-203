@@ -8,10 +8,10 @@
 </head>
 <header>
   <div class="images-header">
-    <a href="accueil.php" class="logo_univ">
+    <a href="accueil_admin.php" class="logo_univ">
       <img src="../images/logo_universite.png" alt="logo_header">
     </a>
-    <a href="compte.php" class="img_compte">
+    <a href="compte_admin.php" class="img_compte">
       <img src="../images/compte.png" alt="mon_compte">
     </a>
   </div>
@@ -35,7 +35,7 @@
                 <option value="Salle gaming">Salle gaming</option>
                 <option value="Salle de repos">Salle de repos</option>
             </select>
-            <input type="submit" value="Valider">
+            <button type="submit" class="btn-valider">Valider</button> <br> <br>
         </form>
     </div>
 </body>
