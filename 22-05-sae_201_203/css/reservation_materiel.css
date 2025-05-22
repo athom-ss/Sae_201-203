@@ -1,0 +1,127 @@
+/* ==========================================
+   STYLES SPÉCIFIQUES À LA PAGE DE RÉSERVATION DE MATÉRIEL
+   Utilisé uniquement dans : reservation_materiel.php
+   ========================================== */
+
+/* Conteneur principal avec mise en page en deux colonnes */
+.reservation-materiel-container {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+    gap: 60px;
+    margin: 0 5%;
+}
+
+/* Section gauche : Formulaire de réservation */
+.formulaire-reservation {
+    flex: 0 0 370px;
+    padding: 35px 0;
+}
+
+.formulaire-reservation form,
+.bloc-reservation {
+    width: 100%;
+    box-sizing: border-box;
+}
+
+/* Section droite : Liste du matériel disponible */
+.materiel-disponible {
+    margin-top: 2.6%;
+    flex: 1;
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    max-height: 80vh;
+    overflow-y: auto;
+}
+
+/* Style du tableau de matériel */
+.materiel-disponible table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+}
+
+/* Style des cellules du tableau */
+.materiel-disponible th,
+.materiel-disponible td {
+    padding: 12px;
+    text-align: left;
+    border: 1px solid #ddd;
+}
+
+/* Style de l'en-tête du tableau */
+.materiel-disponible th {
+    background-color: #f5f5f5;
+    font-weight: bold;
+}
+
+/* Alternance des couleurs des lignes du tableau */
+.materiel-disponible tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+/* Effet de survol sur les lignes du tableau */
+.materiel-disponible tr:hover {
+    background-color: #f0f0f0;
+}
+
+/* Ajustement des champs du formulaire */
+.formulaire-reservation input,
+.formulaire-reservation select {
+    width: 100% !important;
+    min-width: 0;
+    box-sizing: border-box;
+    width: 100%;
+}
+
+.formulaire-reservation label {
+    display: block;
+    margin-bottom: 4px;
+    font-weight: bold;
+    color: #333;
+    font-size: 1em;
+    width: 100%;
+}
+
+.formulaire-reservation button {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 10px;
+    border: none;
+    border-radius: 5px;
+}
+
+.formulaire-reservation button[type="submit"] {
+    background-color: #2F2A86;
+    color: white;
+}
+
+.formulaire-reservation button[type="button"] {
+    background-color: #f0f0f0;
+    color: #333;
+}
+
+.formulaire-reservation button:hover {
+    opacity: 0.9;
+}
+
+.bloc-reservation {
+    margin-bottom: 20px;
+    padding: 15px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+/* Media queries */
+@media (max-width: 700px) {
+    .reservation-materiel-container {
+        flex-direction: column;
+        gap: 20px;
+    }
+    
+    .formulaire-reservation {
+        flex: 1;
+    }
+}

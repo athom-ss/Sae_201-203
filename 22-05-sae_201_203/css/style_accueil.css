@@ -1,0 +1,419 @@
+.main-banner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 40px 10vw 24px 10vw;
+    background-image: url('../images/environnement_de_travail.jpg');
+    background-size: cover;
+    background-position: bottom;
+    background-repeat: no-repeat;
+    min-height: 400px; /* ajuste la hauteur selon ton besoin */
+    display: flex;
+    align-items: center;
+    /* Optionnel : pour assombrir l'image et améliorer la lisibilité du texte */
+    position: relative;
+}
+
+.main-banner::before {
+    content: "";
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: rgba(0,0,0,0.4); /* assombrit l'image */
+    z-index: 1;
+}
+
+
+.main-banner .text {
+    position: relative;
+    z-index: 2;
+    color: #fff;
+    font-size: 125%;
+}
+
+.main-banner h1 {
+    font-size: 2em;
+    font-weight: 600;
+    margin-bottom: 16px;
+}
+
+.main-banner p {
+    font-size: 1em;
+    margin-bottom: 16px;
+}
+
+.main-banner .boutton {
+    background: #2d2e83;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    padding: 10px 24px;
+    font-size: 1em;
+    cursor: pointer;
+}
+
+.main-banner .image {
+    background: #e6e6f6;
+    border-radius: 12px;
+    width: 260px;
+    height: 160px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #222;
+    font-size: 1.1em;
+}
+
+.section-title {
+    text-align: center;
+    font-size: 2em;
+    margin: 40px 0 32px 0;
+    font-weight: 1.5em;
+}
+
+.steps {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 6%;
+    margin-bottom: 3.2%;
+}
+
+.step {
+    text-align: center;
+    width: 20%;
+}
+
+.step .icone_loupe, .step .icone_formulaire, .step .icone_valider {
+    width: 20%;
+    height: 20%;
+    margin: 0 auto 8px auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.step .label {
+    font-size: 1.5em;
+    margin-bottom: 5%;
+    margin-top: 5%;
+}
+
+.desc {
+    font-size: 1em;
+    margin-bottom: 2%;
+    background-color: #2d2e83;
+    color: white;
+    padding: 0.6rem 2.2rem;
+    border: none;
+    border-radius: 6px;
+    width: 115%;
+    margin-left: -8%;
+}
+
+.arrow {
+    font-size: 2.5em;
+    color: #2d2e83;
+    transform: scale(1.5);
+    margin-top: -6%;
+}
+
+.content-section {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3%;
+    padding: 2.8% 5vw;
+    align-items: stretch;
+}
+
+
+.carte-image-materiel, .carte-image-salle {
+    background: #fff;
+    border-radius: 0.75em;
+    box-shadow: 0 0.125em 0.5em rgba(0,0,0,0.07);
+    padding: 1.5%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-width: 0;
+}
+
+.carte-image-materiel {
+    background-image: url('../images/matériel_numérique.png');
+    background-size: cover;
+    background-position: bottom;
+    background-repeat: no-repeat;  
+    position: relative;
+    height: 30vh;
+    min-height: 200px;
+    width: 100%;
+    max-width: 100%;
+}
+
+.carte-image-salle {
+    background-image: url('../images/salle_travail.png');
+    background-size: cover;
+    background-position: bottom;
+    background-repeat: no-repeat;  
+    position: relative;
+    height: 30vh;
+    min-height: 200px;
+    width: 100%;
+    max-width: 100%;
+}
+
+.carte-image-materiel::before, .carte-image-salle::before {
+    content: "";
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: rgba(0,0,0,0.4);
+    z-index: 1;
+    border-radius: 0.75em;
+}
+
+.carte-image-materiel img, .carte-image-salle img {
+    width: 120%;
+    height: 120%;
+    object-fit: cover;
+    border-radius: 0.75em;
+}
+
+.carte-image-materiel h2, .carte-image-salle h2 {
+    font-size: 1.7rem;
+    align-self: center;
+    margin-bottom: 4%;
+    color: #fff;
+    position: relative;
+    z-index: 2;
+    text-align: center;
+}
+
+.carte-image-materiel p, .carte-image-salle p {
+    align-self: center;
+    margin-bottom: 2%;
+    font-size: 1rem;
+    color: #fff;
+    position: relative;
+    z-index: 2;
+    text-align: center;
+}
+
+.carte-image-materiel .boutton_carte, .carte-image-salle .boutton_carte {
+    background-color: #2f257e;
+    color: white;
+    padding: 0.5rem 1.5rem;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+    text-decoration: none;
+    text-align: center;
+    margin-top:5%;
+    font-size:1.1em;
+    z-index: 2;
+    position: relative;
+}
+
+/* Responsive pour tablettes */
+@media (max-width: 900px) {
+    .content-section {
+        grid-template-columns: 1fr;
+        grid-template-rows: none;
+        gap: 1.5em;
+        padding: 2em 2vw;
+    }
+    .carte-image-materiel, .carte-image-salle {
+        min-height: 120px;
+        align-items: center;
+        margin-bottom: 2%;
+        height: 24vh;
+    }
+    .carte-image-materiel h2, .carte-image-salle h2 {
+        font-size: 1.2rem;
+    }
+    .carte-image-materiel ul, .carte-image-salle ul {
+        font-size: 1rem;
+    }
+}
+
+/* Responsive pour mobiles */
+@media (max-width: 600px) {
+    .content-section {
+        padding: 1em 1vw;
+        gap: 1em;
+    }
+    .carte-image-materiel, .carte-image-salle {
+        min-height: 80px;
+        height: 18vh;
+        padding: 2% 1%;
+    }
+    .carte-image-materiel h2, .carte-image-salle h2 {
+        font-size: 1rem;
+        margin-bottom: 2%;
+    }
+    .carte-image-materiel ul, .carte-image-salle ul {
+        font-size: 0.95rem;
+        margin-bottom: 2%;
+    }
+    .carte-image-materiel .boutton_carte, .carte-image-salle .boutton_carte {
+        font-size: 0.95rem;
+        padding: 0.4em 1em;
+        margin-top: 4px;
+    }
+}
+
+@media (max-width: 1100px) {
+    .content-section {
+        grid-template-columns: 1fr;
+        gap: 2em;
+        padding: 2em 4vw;
+    }
+    .carte-image-materiel, .carte-image-salle {
+        min-height: 160px;
+        height: 26vh;
+    }
+    .carte-image-materiel h2, .carte-image-salle h2 {
+        font-size: 1.4em;
+    }
+    .carte-image-materiel ul, .carte-image-salle ul {
+        font-size: 1.1em;
+    }
+}
+
+@media (max-width: 700px) {
+    .content-section {
+        padding: 1em 1vw;
+        gap: 1em;
+    }
+    .carte-image-materiel, .carte-image-salle {
+        min-height: 90px;
+        height: 18vh;
+        padding: 2% 1%;
+    }
+    .carte-image-materiel h2, .carte-image-salle h2 {
+        font-size: 1.1em;
+        margin-bottom: 2%;
+    }
+    .carte-image-materiel ul, .carte-image-salle ul {
+        font-size: 0.98em;
+        margin-bottom: 2%;
+    }
+    .carte-image-materiel .boutton_carte, .carte-image-salle .boutton_carte {
+        font-size: 0.95em;
+        padding: 0.4em 1em;
+        margin-top: 4px;
+    }
+}
+
+.footer {
+    background-color: #2f2a86;
+    color: white;
+    padding: 30px 8%;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 40px;
+    justify-content: space-between;
+    font-size: 0.9em;
+}
+
+.logo-footer {
+    height: 40px !important;
+    width: auto !important;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.footer-column {
+    flex: 1 1 200px;
+    min-width: 200px;
+}
+
+.footer-column h4 {
+    margin-bottom: 10px;
+    font-size: 1.1em;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-family: 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+}
+
+.footer-column p,
+.footer-column a {
+    display: block;
+    margin: 5px 0;
+    color: white;
+    text-decoration: none;
+}
+
+.footer-column a:hover {
+    text-decoration: underline;
+}
+
+.footer-bottom {
+    background-color: #221f6a;
+    color: #ddd;
+    text-align: center;
+    padding: 20px 10px;
+    font-size: 0.85em;
+}
+
+.footer-bottom-links {
+    margin-bottom: 8px;
+}
+
+.footer-bottom-links a {
+    color: #ddd;
+    text-decoration: none;
+    margin: 0 8px;
+}
+
+.footer-bottom-links a:hover {
+    text-decoration: underline;
+}
+
+.footer-bottom-links span {
+    color: #888;
+}
+
+.footer-column img {
+    display: block;
+    margin: 6px 0;
+    width: 24px; /* ou la taille que tu préfères */
+    height: auto;
+}
+
+.boutton {
+    background-color: #2f257e;
+    color: white;
+    padding: 0.5rem 1.5rem;
+    border: none;
+    border-radius: 6px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+    text-decoration: none;
+    text-align: center;
+    margin-top:8px;
+    font-size:0.9em;
+}
+
+
+.boutton, .boutton_carte {
+    transition: transform 0.1s, box-shadow 0.2s, background 0.2s;
+}
+.boutton:hover, .boutton_carte:hover, .boutton:focus, .boutton_carte:focus {
+    background: #221f6a;
+    transform: scale(1.06);
+    box-shadow: 0 4px 16px rgba(47,37,126,0.15);
+    outline: none;
+}
+.boutton:active, .boutton_carte:active {
+    transform: scale(0.96);
+    box-shadow: 0 2px 8px rgba(47,37,126,0.10);
+}
+
+.boutton.pressed, .boutton_carte.pressed {
+    transform: scale(0.96) !important;
+    box-shadow: 0 2px 8px rgba(47,37,126,0.10) !important;
+}
