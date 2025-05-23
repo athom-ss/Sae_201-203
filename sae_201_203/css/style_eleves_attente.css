@@ -1,0 +1,99 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: #f4f6fb;
+    font-family: 'Segoe UI', Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+h1 {
+    text-align: center;
+    color: #2f2a86;
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+
+/* ==========================================
+   STYLES POUR LA PAGE DES ÉLÈVES EN ATTENTE
+   ========================================== */
+
+table {
+    margin: 0 auto;
+    border-collapse: collapse;
+    width: 90%;
+    background: #fff;
+    box-shadow: 0 4px 16px rgba(47,42,134,0.08);
+    border-radius: 12px;
+    overflow: hidden;
+}
+
+thead {
+    background: #2f2a86;
+    color: #fff;
+}
+
+thead th {
+    padding: 16px 8px;
+    font-size: 1.1em;
+}
+
+tbody td {
+    padding: 14px 8px;
+    text-align: center;
+    border-bottom: 1px solid #e0e0e0;
+}
+
+tbody tr:last-child td {
+    border-bottom: none;
+}
+
+.valider, .rejeter {
+    padding: 8px 18px;
+    border: none;
+    border-radius: 6px;
+    font-size: 1em;
+    font-weight: 500;
+    cursor: pointer;
+    margin: 0 4px;
+    transition: background 0.2s, color 0.2s;
+}
+
+.valider {
+    background: #28a745;
+    color: #fff;
+}
+
+.valider:hover {
+    background: #218838;
+}
+
+.rejeter {
+    background: #dc3545;
+    color: #fff;
+}
+
+.rejeter:hover {
+    background: #b52a37;
+}
+
+p {
+    text-align: center;
+    color: #888;
+    font-size: 1.1em;
+    margin-top: 40px;
+}
+
+td form {
+    display: inline-block;
+    background: none;
+    box-shadow: none;
+    border: none;
+    padding: 0;
+    margin: 0 2px;
+    vertical-align: middle;
+}

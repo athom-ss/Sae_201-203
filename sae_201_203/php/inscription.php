@@ -4,6 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../css/style_eth.css?v=<?= time(); ?>">
+    <link rel="stylesheet" href="../css/style_insc_connex.css?v=<?= time(); ?>">
+    <link rel="stylesheet" href="../css/header_nav_footer.css?v=<?= time(); ?>">
+    <link rel="stylesheet" href="../css/style.css?v=<?= time(); ?>">
     <title>Inscription - Université Gustave Eiffel</title>
 </head>
 <body>

@@ -70,8 +70,9 @@ try {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../css/style.css?v=<?= time(); ?>">
     <link rel="stylesheet" href="../css/style_compte.css?v=<?= time(); ?>">
+    <link rel="stylesheet" href="../css/header_nav_footer.css?v=<?= time(); ?>">
+    <link rel="stylesheet" href="../css/style_compte_admin.css?v=<?= time(); ?>">
     <title>Mon compte</title>
 </head>
 
@@ -93,7 +94,7 @@ try {
     </nav>
 
     <div class="conteneur-compte">
-        <br><h1>Bienvenue <?= htmlspecialchars($user['prenom']) ?> !</h1>
+        <h1>Bienvenue <?= htmlspecialchars($user['prenom']) ?> !</h1>
 
         <?php if (htmlspecialchars($user['statut']) === 'attente') : ?>
             <h2>Votre compte est en attente de validation</h2>
@@ -143,6 +144,7 @@ try {
                         <p><strong>Salle :</strong> <?= htmlspecialchars($res['nom_salle']) ?></p>
                         <p><strong>Début :</strong> <?= htmlspecialchars($res['datetime_debut']) ?></p>
                         <p><strong>Fin :</strong> <?= htmlspecialchars($res['datetime_fin']) ?></p>
+                        <p><strong>Statut :</strong> <?= htmlspecialchars($res['statut']) ?></p>
                     </div>
                 <?php endforeach; ?>
             </div>
@@ -152,16 +154,37 @@ try {
 
         <br><br><h2>Mes réservations de matériel</h2>
         <?php if (count($reservations_materiel) > 0): ?>
-            <div class="liste-reservations">
-                <?php foreach ($reservations_materiel as $res_mat): ?>
-                    <div class="reservation-card">
-                        <p><strong>Salle :</strong> <?= htmlspecialchars($res_mat['id_materiel']) ?></p>
-                        <p><strong>ID du matériel :</strong> <?= htmlspecialchars($res_mat['type_materiel']) ?></p>
-                        <p><strong>Début :</strong> <?= htmlspecialchars($res_mat['datetime_reservation']) ?></p>
-                        <p><strong>Fin :</strong> <?= htmlspecialchars($res_mat['datetime_reservation_fin']) ?></p>
+            <ul class="compte-resa-mat-list">
+                <?php foreach ($reservations_materiel as $res_mat): 
+                    $materiel = null;
+                    $stmt = $pdo->prepare("SELECT * FROM materiel WHERE id_materiel = :id");
+                    $stmt->execute([':id' => $res_mat['id_materiel']]);
+                    $materiel = $stmt->fetch(PDO::FETCH_ASSOC);
+                ?>
+                <li class="compte-resa-mat-item">
+                    <div class="compte-resa-mat-img">
+                        <?php if (!empty($materiel['image'])): ?>
+                            <img src="../<?= htmlspecialchars($materiel['image']) ?>" alt="Image du matériel">
+                        <?php else: ?>
+                            <div class="compte-resa-mat-placeholder">📦</div>
+                        <?php endif; ?>
                     </div>
+                    <div class="compte-resa-mat-infos">
+                        <div class="compte-resa-mat-title">
+                            <b><?= htmlspecialchars($materiel['designation'] ?? '') ?></b>
+                            <span class="compte-resa-mat-type"><?= htmlspecialchars($materiel['type_materiel'] ?? $res_mat['type_materiel']) ?></span>
+                        </div>
+                        <div class="compte-resa-mat-dates">
+                            <span>Début : <?= htmlspecialchars($res_mat['datetime_reservation']) ?></span>
+                            <span>Fin : <?= htmlspecialchars($res_mat['datetime_reservation_fin']) ?></span>
+                        </div>
+                        <span class="compte-resa-mat-statut statut-<?= strtolower(preg_replace('/\s+/', '-', $res_mat['statut'])) ?>">
+                            <?= htmlspecialchars($res_mat['statut']) ?>
+                        </span>
+                    </div>
+                </li>
                 <?php endforeach; ?>
-            </div>
+            </ul>
         <?php else: ?>
             <p>Vous n'avez aucune réservation de matériel pour le moment.</p>
         <?php endif; ?>

@@ -1,3 +1,4 @@
+
 <?php
 session_start();
 require_once "connexion_base.php";
@@ -51,6 +52,9 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     <meta charset="UTF-8">
     <title>Connexion - Université Gustave Eiffel</title>
     <link rel="stylesheet" href="../css/style_eth.css?v=<?= time(); ?>">
+    <link rel="stylesheet" href="../css/style_insc_connex.css?v=<?= time(); ?>">
+    <link rel="stylesheet" href="../css/header_nav_footer.css?v=<?= time(); ?>">
+    <link rel="stylesheet" href="../css/style.css?v=<?= time(); ?>">
 </head>
 <body>
 

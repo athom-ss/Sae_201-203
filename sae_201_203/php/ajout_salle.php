@@ -4,19 +4,21 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../css/style.css?v=<?= time(); ?>">  <!--  POUR PAS DEVOIR REFAIRE UN CSS -->
+    <link rel="stylesheet" href="../css/header_nav_footer.css">
+    <link rel="stylesheet" href="../css/style_formulaire.css?v=<?= time(); ?>">
     <title>Ajout de salle</title>
 </head>
-<header>
-  <div class="images-header">
-    <a href="accueil_admin.php" class="logo_univ">
-      <img src="../images/logo_universite.png" alt="logo_header">
-    </a>
-    <a href="compte_admin.php" class="img_compte">
-      <img src="../images/compte.png" alt="mon_compte">
-    </a>
-  </div>
-</header>
 <body>
+    <header>
+      <div class="images-header">
+        <a href="accueil_admin.php" class="logo_univ">
+          <img src="../images/logo_univ_eiffel_blanc.png" alt="logo_header">
+        </a>
+        <a href="compte_admin.php" class="img_compte">
+          <img src="../images/compte.png" alt="mon_compte">
+        </a>
+      </div>
+    </header>
     <nav class="navbar">
       <a href="reservation_materiel.php">Réservation de matériel</a>
       <a href="ajout_materiel.php">Ajout de matériel</a>
@@ -25,17 +27,16 @@
     </nav>
     <div class="conteneur-formulaire">
         <form action="ajout_salle.php" method="POST">
-            <label for="nom_salle">Nom de la salle :</label>
+            <h1>Ajout de salle</h1><br>
             <input id="nom_salle" type="text" name="nom_salle" placeholder="Nom de la salle"><br><br>
 
-            <label for="type_salle">Type de salle :</label>
             <select id="type_salle" name="type_salle">
                 <option value="Salle de classe">Salle de classe</option>
                 <option value="Salle informatique">Salle informatique</option>
                 <option value="Salle gaming">Salle gaming</option>
                 <option value="Salle de repos">Salle de repos</option>
             </select>
-            <button type="submit" class="btn-valider">Valider</button> <br> <br>
+            <br><br><button type="submit" class="btn-valider">Valider</button> <br>
         </form>
     </div>
 </body>

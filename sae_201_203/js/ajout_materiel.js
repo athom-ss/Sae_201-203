@@ -4,9 +4,13 @@ function ajouterBloc() {
     const nouveauBloc = bloc.cloneNode(true);
 
     // vider les champs du nouveau bloc
-    nouveauBloc.querySelectorAll('input').forEach(input => input.value = '');
-
-    conteneur.appendChild(nouveauBloc);
+    nouveauBloc.querySelectorAll('input, select, textarea').forEach(input => {
+        if (input.type === 'file') {
+            input.value = ''; // Réinitialise le champ file
+        } else {
+            input.value = '';
+        }
+    });
 }
 
 function retirerBloc() {
