@@ -1,0 +1,186 @@
+/* ==========================================
+   STYLES SPÉCIFIQUES À LA PAGE DE RÉSERVATION DE SALLE
+   Utilisé uniquement dans : reservation_salle.php
+   ========================================== */
+
+/* Conteneur principal avec mise en page en deux colonnes */
+.reservation-salle-container {
+    background: none;
+    box-shadow: none;
+    border-radius: 0;
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+    gap: 60px;
+    margin: 0 5%;
+}
+
+/* Section gauche : Formulaire de réservation */
+.formulaire-reservation-salle {
+    flex: 0 0 370px;
+    background: none;
+    box-shadow: none;
+    border-radius: 0;
+    padding: 35px 0;
+    box-sizing: border-box;
+}
+
+.formulaire-reservation-salle form {
+    width: 100%;
+    box-sizing: border-box;
+}
+
+/* Section droite : Liste des salles disponibles */
+.salles-disponibles {
+    margin-top: 2.6%;
+    flex: 1;
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    max-height: 80vh;
+    overflow-y: auto;
+}
+
+/* Style du tableau de salles */
+.salles-disponibles table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+}
+
+.salles-disponibles th,
+.salles-disponibles td {
+    padding: 12px;
+    text-align: left;
+    border: 1px solid #ddd;
+}
+
+.salles-disponibles th {
+    background-color: #f5f5f5;
+    font-weight: bold;
+}
+
+.salles-disponibles tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+.salles-disponibles tr:hover {
+    background-color: #f0f0f0;
+}
+
+/* Styles du formulaire */
+.formulaire-reservation-salle input,
+.formulaire-reservation-salle select {
+    width: 100% !important;
+    min-width: 0;
+    box-sizing: border-box;
+}
+
+.formulaire-reservation-salle label {
+    display: block;
+    margin-bottom: 4px;
+    font-weight: bold;
+    color: #333;
+    font-size: 1em;
+    width: 100%;
+}
+
+.formulaire-reservation-salle button {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 10px;
+    border: none;
+    border-radius: 5px;
+}
+
+.formulaire-reservation-salle button[type="submit"] {
+    background-color: #2F2A86;
+    color: white;
+}
+
+.formulaire-reservation-salle button[type="button"] {
+    background-color: #f0f0f0;
+    color: #333;
+}
+
+.formulaire-reservation-salle button:hover {
+    opacity: 0.9;
+}
+
+/* ==========================================
+   STYLES SPÉCIFIQUES À L'AFFICHAGE DES SALLES DISPONIBLES
+   ========================================== */
+
+.salles-disponibles-container {
+    max-width: 900px;
+    margin: 3rem auto 2rem auto;
+    background: #f7f7fa;
+    border-radius: 12px;
+    box-shadow: 0 4px 16px rgba(47,37,126,0.07);
+    padding: 2rem 2.5rem;
+}
+
+.salles-disponibles-container h2 {
+    color: #2f257e;
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.table-salles-disponibles {
+    width: 100%;
+    border-collapse: collapse;
+    background: white;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(47,37,126,0.05);
+}
+
+.table-salles-disponibles th, 
+.table-salles-disponibles td {
+    padding: 1rem 0.7rem;
+    text-align: center;
+    border-bottom: 1px solid #e0e0e0;
+}
+
+.table-salles-disponibles th {
+    background: #2f257e;
+    color: #fff;
+    font-weight: 600;
+}
+
+.table-salles-disponibles tr:last-child td {
+    border-bottom: none;
+}
+
+.table-salles-disponibles tr:hover {
+    background: #f0f0ff;
+}
+
+/* Conteneur flex pour coller les deux colonnes */
+.conteneur-formulaire-et-salles {
+    display: flex;
+    gap: 0;
+    justify-content: center;
+    align-items: flex-start;
+    margin-top: 2rem;
+}
+
+.salles-disponibles-container,
+.conteneur-formulaire-et-salles > div:first-child {
+    margin: 0;
+    padding-left: 0;
+    padding-right: 0;
+}
+
+/* Media queries */
+@media (max-width: 700px) {
+    .salles-disponibles-container {
+        padding: 1rem 0.3rem;
+    }
+    .table-salles-disponibles th, 
+    .table-salles-disponibles td {
+        padding: 0.5rem 0.2rem;
+        font-size: 0.95rem;
+    }
+}
