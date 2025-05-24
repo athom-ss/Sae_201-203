@@ -1,7 +1,11 @@
-
 <?php
 session_start();
 require_once "connexion_base.php";
+
+// Nettoyage de la session existante
+session_unset();
+session_destroy();
+session_start();
 
 $erreur = '';
 
@@ -19,6 +23,8 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         $utilisateur = $stmt->fetch(PDO::FETCH_ASSOC);
 
         if ($utilisateur) {
+            // Initialisation de la session
+            $_SESSION = array();
             $_SESSION['user'] = [
                 'id' => $utilisateur['id'],
                 'mail' => $utilisateur['mail'],
@@ -26,13 +32,23 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                 'role' => $utilisateur['role_personne'],
                 'prenom' => $utilisateur['prenom'],
                 'num' => $utilisateur['num'],
-                ':statut' => $utilisateur['statut']
+                'statut' => $utilisateur['statut']
             ];
+            $_SESSION['last_activity'] = time();
+            
+            error_log("Session créée avec succès : " . print_r($_SESSION, true));
 
             if ($utilisateur['role_personne'] === 'Administrateur') {
                 header("Location: accueil_admin.php");
-            } else {
+            } 
+            if ($utilisateur['role_personne'] === 'Agent') {
+                header("Location: accueil_agent.php");
+            }
+            if ($utilisateur['role_personne'] === 'Etudiant') {
                 header("Location: accueil.php");
+            }
+            if ($utilisateur['role_personne'] === 'Enseignant') {
+                header("Location: accueil_enseignant.php");
             }
             exit;
         } else {
@@ -51,10 +67,11 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 <head>
     <meta charset="UTF-8">
     <title>Connexion - Université Gustave Eiffel</title>
-    <link rel="stylesheet" href="../css/style_eth.css?v=<?= time(); ?>">
     <link rel="stylesheet" href="../css/style_insc_connex.css?v=<?= time(); ?>">
     <link rel="stylesheet" href="../css/header_nav_footer.css?v=<?= time(); ?>">
     <link rel="stylesheet" href="../css/style.css?v=<?= time(); ?>">
+    <link rel="stylesheet" href="../css/style_formulaire.css?v=<?= time(); ?>">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
 
@@ -63,26 +80,39 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
          alt="Université Gustave Eiffel" class="logo-header">
 </header>
 
-<div class="login-wrapper">
-    <form class="login-box" method="POST" action="">
-        <div class="login-header">
-            <img src="../images/logo_univ_blanc.png" alt="logo">
-            <strong>Service central d’authentification</strong>
+<div class="container py-5">
+    <div class="row justify-content-center">
+        <div class="d-flex justify-content-center">
+            <div class="card shadow w-100" style="max-width: 500px;">
+                <div class="card-header py-3" style="background-color: #BBEFF4; border-bottom: none; padding-bottom: 0.75rem;">
+                    <div class="d-flex align-items-center">
+                        <img src="../images/logo_univ_blanc.png" alt="logo" class="me-3" style="width: 38px; height: 38px;">
+                        <span class="fw-bold fs-5" style="color: #222;">Service central d'authentification</span>
+                    </div>
+                </div>
+                <div class="card-body p-4">
+                    <form method="POST" action="">
+                        <?php if (!empty($erreur)) echo "<p class='error-message text-danger'>$erreur</p>"; ?>
+                        <div class="mb-3">
+                            <label for="mail_connexion" class="form-label">Email</label>
+                            <input type="email" class="form-control" id="mail_connexion" name="mail_connexion" placeholder="Email :" required>
+                        </div>
+                        <div class="mb-4">
+                            <label for="mdp" class="form-label">Mot de passe</label>
+                            <input type="password" class="form-control" id="mdp" name="mdp" placeholder="Mot de passe :" required>
+                        </div>
+                        <div class="d-grid mb-3">
+                            <button type="submit" class="btn btn-primary btn-lg text-white">Se connecter</button>
+                        </div>
+                        <div class="text-center mt-4">
+                            <a href="../php/inscription.php" class="btn btn-primary text-white">Se créer un compte ?</a>
+                        </div>
+                        <p class="small-text text-center mt-3">Pour des raisons de sécurité, veuillez vous déconnecter et fermer votre navigateur lorsque vous avez fini d'accéder aux services authentifiés.</p>
+                    </form>
+                </div>
+            </div>
         </div>
-
-        <?php if (!empty($erreur)) echo "<p class='error-message'>$erreur</p>"; ?>
-
-        <input type="email" name="mail_connexion" placeholder="Email :" required>
-        <input type="password" name="mdp" placeholder="Mot de passe :" required>
-        <button type="submit">Se connecter</button>
-
-        <hr class="divider">
-
-        <a href="../php/inscription.php" class="register-link">Se créer un compte ?</a>
-        <p class="small-text">Pour des raisons de sécurité, 
-            veuillez vous déconnecter et fermer votre navigateur 
-            lorsque vous avez fini d'accéder aux services authentifiés.</p>
-    </form>
+    </div>
 </div>
 
 <footer class="footer">

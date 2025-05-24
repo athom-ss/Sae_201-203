@@ -7,27 +7,41 @@
 }
 .reservation-materiel-form {
     background: #e0e0e0;
-    border-radius: 18px;
-    padding: 24px 24px 12px 24px;
-    margin: 32px auto 32px auto;
-    max-width: 900px;
+    border-radius: 16px;
+    box-shadow: 0 2px 12px rgba(47,42,134,0.08);
+    padding: 1.2rem 1.5rem;
+    margin-bottom: 1.5rem;
     display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.04);
-    width: 100%;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 1.2rem;
 }
 .reservation-materiel-form .form-fields {
     display: flex;
-    gap: 24px;
-    align-items: flex-end;
-    width: 100%;
+    flex-direction: row;
     flex-wrap: wrap;
+    gap: 1.2rem;
+    width: 100%;
 }
-.reservation-materiel-form label {
-    font-weight: 500;
-    margin-bottom: 4px;
-    display: block;
+.reservation-materiel-form .form-fields > div {
+    display: flex;
+    flex-direction: column;
+    min-width: 180px;
+    flex: 1 1 180px;
+}
+.reservation-materiel-form .form-fields label {
+    font-weight: 600;
+    color: #2f2a86;
+    margin-bottom: 0.2rem;
+}
+.reservation-materiel-form .form-fields input {
+    padding: 0.6rem 0.7rem;
+    border: 1px solid #d1d1e0;
+    border-radius: 6px;
+    font-size: 1rem;
+    background: #f7f7fa;
+    color: #222;
 }
 .reservation-materiel-form input[type="number"],
 .reservation-materiel-form input[type="datetime-local"],
@@ -55,19 +69,20 @@
     color: #c62828;
 }
 .btn-confirmer {
-    background: #3d3472;
-    color: #fff;
+    background-color: #463b7b;
+    color: white;
+    padding: 0.8rem 2.2rem;
     border: none;
-    border-radius: 6px;
-    padding: 10px 28px;
-    font-size: 1em;
-    font-weight: 600;
+    border-radius: 7px;
     cursor: pointer;
-    margin-left: 12px;
-    transition: background 0.2s;
+    font-size: 1.1rem;
+    font-weight: 600;
+    transition: background-color 0.2s;
+    margin-top: 1.2rem;
+    align-self: flex-end;
 }
 .btn-confirmer:hover {
-    background: #2a2350;
+    background-color: #2f2a86;
 }
 
 /* Liste des cartes matériel */

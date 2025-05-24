@@ -106,6 +106,7 @@ try {
                 <div class="pseudo"><?= htmlspecialchars($user['pseudo']) ?></div>
                 <div class="id">Votre ID : <?= htmlspecialchars($user['id']) ?></div>
                 <div class="role">Statut : <?= htmlspecialchars($user['role_personne']) ?></div>
+                <div class="groupe">Groupe : <?= htmlspecialchars($user['groupe']) ?></div>
                 <button class="btn">Modifier</button> <br><br>
                 <a href="deconnexion.php" class="btn bouton-deconnexion">Se déconnecter</a>
             </div>
@@ -141,10 +142,23 @@ try {
             <div class="liste-reservations">
                 <?php foreach ($reservations as $res): ?>
                     <div class="reservation-card">
-                        <p><strong>Salle :</strong> <?= htmlspecialchars($res['nom_salle']) ?></p>
-                        <p><strong>Début :</strong> <?= htmlspecialchars($res['datetime_debut']) ?></p>
-                        <p><strong>Fin :</strong> <?= htmlspecialchars($res['datetime_fin']) ?></p>
-                        <p><strong>Statut :</strong> <?= htmlspecialchars($res['statut']) ?></p>
+                        <?php
+                        // Récupérer l'image de la salle
+                        $stmt = $pdo->prepare("SELECT image FROM salles WHERE nom_salle = ?");
+                        $stmt->execute([$res['nom_salle']]);
+                        $salle = $stmt->fetch(PDO::FETCH_ASSOC);
+                        ?>
+                        <?php if (!empty($salle['image'])): ?>
+                            <div class="salle-image">
+                                <img src="../<?= htmlspecialchars($salle['image']) ?>" alt="Image de la salle" style="max-width:100px; max-height:100px; border-radius:4px;">
+                            </div>
+                        <?php endif; ?>
+                        <div class="reservation-info">
+                            <p><strong>Salle :</strong> <?= htmlspecialchars($res['nom_salle']) ?></p>
+                            <p><strong>Début :</strong> <?= htmlspecialchars($res['datetime_debut']) ?></p>
+                            <p><strong>Fin :</strong> <?= htmlspecialchars($res['datetime_fin']) ?></p>
+                            <p><strong>Statut :</strong> <?= htmlspecialchars($res['statut']) ?></p>
+                        </div>
                     </div>
                 <?php endforeach; ?>
             </div>

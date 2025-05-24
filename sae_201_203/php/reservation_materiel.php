@@ -18,8 +18,11 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $date_debut = $_POST["datetime_reservation"] ?? '';
     $date_fin = $_POST["datetime_reservation_fin"] ?? '';
     $statut = 'En attente de validation';
+    $eleves = $_POST["eleves"] ?? '';
 
-    if (empty($ids_materiel) || empty($num_carte) || empty($date_debut) || empty($date_fin) || (count($ids_materiel) === 1 && $ids_materiel[0] === '')) {
+
+    if (empty($ids_materiel) || empty($num_carte) || empty($date_debut) || empty($date_fin) || 
+    (count($ids_materiel) === 1 && $ids_materiel[0] === '')) {
         $message = "<div class='erreur-reservation'>❌ Veuillez remplir tous les champs et sélectionner au moins un matériel.</div>";
     } else {
         // Récupérer nom et prénom via le numéro de carte (une seule fois)
@@ -62,12 +65,10 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             $insert = $pdo->prepare("
                 INSERT INTO reservations_materiel (
                     id_materiel, type_materiel, num_carte_reservation, nom_reservation, prenom_reservation,
-                    datetime_reservation, datetime_reservation_fin, statut
-                ) VALUES (
+                    datetime_reservation, datetime_reservation_fin, statut, eleves) 
+                    VALUES (
                     :id_materiel, :type_materiel, :num_carte, :nom, :prenom,
-                    :datetime_reservation, :datetime_reservation_fin, :statut
-                )
-            ");
+                    :datetime_reservation, :datetime_reservation_fin, :statut, :eleves)");
             $insert->execute([
                 ':id_materiel' => $id_materiel,
                 ':type_materiel' => $type_materiel,
@@ -76,7 +77,8 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                 ':prenom' => $prenom,
                 ':datetime_reservation' => $date_debut,
                 ':datetime_reservation_fin' => $date_fin,
-                ':statut' => $statut
+                ':statut' => $statut,
+                ':eleves' => $eleves
             ]);
             $successCount++;
         }
@@ -119,7 +121,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
       <a href="reservation_salle.php">Réservation de salle</a>
     </nav>
 
-    <div class="reservation-materiel-wrapper">
+    <br><div class="reservation-materiel-wrapper">
         <form class="reservation-materiel-form" id="reservationForm" action="reservation_materiel.php" method="POST" autocomplete="off">
             <input type="hidden" id="ids_materiel" name="ids_materiel">
             <div class="form-fields">
@@ -130,6 +132,10 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                 <div>
                     <label for="num_carte_reservation">Numéro de carte :</label>
                     <input type="number" id="num_carte_reservation" name="num_carte_reservation" required>
+                </div>
+                <div>
+                    <label for="eleves">Autres élèves du groupe :</label>
+                    <input type="text" id="eleves" name="eleves" readonly placeholder="Votre groupe" style="background:#f5f5f5; color:#333; font-weight:600;">
                 </div>
                 <div>
                     <label for="datetime_reservation">Heure de début :</label>

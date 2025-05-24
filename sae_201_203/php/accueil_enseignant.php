@@ -6,18 +6,18 @@
     <link rel="stylesheet" href="../css/style.css?v=<?= time(); ?>">
     <link rel="stylesheet" href="../css/style_accueil.css?v=<?= time(); ?>">  <!--  POUR PAS DEVOIR REFAIRE UN CSS -->
     <link rel="stylesheet" href="../css/header_nav_footer.css?v=<?= time(); ?>">
-    <link rel="stylesheet" href="../css/style_admin.css?v=<?= time(); ?>">
+    <link rel="stylesheet" href="../css/style_accueil_agent.css?v=<?= time(); ?>">
     <title>Accueil du site</title>
 </head>
 
 <header>
   <div class="images-header">
-    <a href="accueil_admin.php" class="logo_univ">
+    <a href="accueil_enseignant.php" class="logo_univ">
       <img src="../images/logo_univ_eiffel_blanc.png" alt="logo_header">
     </a>
     <div class="header-actions">
       <a href="connexion.php" class="btn-deconnexion">Se déconnecter</a>
-      <a href="compte_admin.php" class="img_compte">
+      <a href="compte.php" class="img_compte">
         <img src="../images/compte.png" alt="mon_compte">
       </a>
     </div>
@@ -27,28 +27,21 @@
     <section class="main-banner">
         <div class="text">
             <h1>
-                Espace Administrateur.<br>
-                Accédez à toutes les fonctionnalités de la plateforme.
+                Espace Enseignant.<br>
+                Réservez une salle pour vos cours.
             </h1>
-            <p>
-                Bienvenue sur la plateforme dédiée aux étudiants et personnels de l'IUT.
-                Gérez les salles, le matériel et les réservations.            
-            </p>
+
         </div>
     </section>
     <div class="admin-accueil-container">
         <div class="admin-links">
-            <a href="ajout_materiel.php" class="admin-link gestion-materiel">
-                <span>Gestion du Matériel</span>
-                <p>Ajoutez et gérez le matériel numérique disponible pour les étudiants</p>
+            <a href="reservation_salle.php" class="admin-link gestion-salles">
+                <span>Réservez une salle</span>
+                <p>Réservez une salle pour vos cours</p>
             </a>
-            <a href="ajout_salle.php" class="admin-link gestion-salles">
-                <span>Gestion des Salles</span>
-                <p>Configurez et gérez les salles de travail et leurs équipements</p>
-            </a>
-            <a href="eleves_attente.php" class="admin-link gestion-comptes">
-                <span>Gestion des Élèves</span>
-                <p>Validez les inscriptions et gérez les comptes étudiants</p>
+            <a href="reservations_enseignant.php" class="admin-link gestion-salles">
+                <span>Gérez les réservations</span>
+                <p>Gérez les réservations des étudiants</p>
             </a>
         </div>
     </div>

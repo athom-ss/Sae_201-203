@@ -6,13 +6,13 @@
     <link rel="stylesheet" href="../css/style.css?v=<?= time(); ?>">
     <link rel="stylesheet" href="../css/style_accueil.css?v=<?= time(); ?>">  <!--  POUR PAS DEVOIR REFAIRE UN CSS -->
     <link rel="stylesheet" href="../css/header_nav_footer.css?v=<?= time(); ?>">
-    <link rel="stylesheet" href="../css/style_admin.css?v=<?= time(); ?>">
+    <link rel="stylesheet" href="../css/style_accueil_agent.css?v=<?= time(); ?>">
     <title>Accueil du site</title>
 </head>
 
 <header>
   <div class="images-header">
-    <a href="accueil_admin.php" class="logo_univ">
+    <a href="accueil_agent.php" class="logo_univ">
       <img src="../images/logo_univ_eiffel_blanc.png" alt="logo_header">
     </a>
     <div class="header-actions">
@@ -27,29 +27,19 @@
     <section class="main-banner">
         <div class="text">
             <h1>
-                Espace Administrateur.<br>
-                Accédez à toutes les fonctionnalités de la plateforme.
+                Espace Agent.<br>
+                Accédez à toutes les réservations.
             </h1>
-            <p>
-                Bienvenue sur la plateforme dédiée aux étudiants et personnels de l'IUT.
-                Gérez les salles, le matériel et les réservations.            
-            </p>
+
         </div>
     </section>
     <div class="admin-accueil-container">
         <div class="admin-links">
-            <a href="ajout_materiel.php" class="admin-link gestion-materiel">
-                <span>Gestion du Matériel</span>
-                <p>Ajoutez et gérez le matériel numérique disponible pour les étudiants</p>
+            <a href="agent_reservations.php" class="admin-link gestion-materiel">
+                <span>Voir les réservations</span>
+                <p>Accédez aux réservations du matériel et des salles</p>
             </a>
-            <a href="ajout_salle.php" class="admin-link gestion-salles">
-                <span>Gestion des Salles</span>
-                <p>Configurez et gérez les salles de travail et leurs équipements</p>
-            </a>
-            <a href="eleves_attente.php" class="admin-link gestion-comptes">
-                <span>Gestion des Élèves</span>
-                <p>Validez les inscriptions et gérez les comptes étudiants</p>
-            </a>
+
         </div>
     </div>
 

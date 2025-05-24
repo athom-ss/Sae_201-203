@@ -75,13 +75,6 @@
     margin-top: 20px;
 }
 
-.admin-link p {
-    font-size: 1.1rem;
-    color: #666;
-    margin-top: 15px;
-    line-height: 1.6;
-}
-
 /* Styles spÃ©cifiques pour chaque carte */
 .admin-link.gestion-materiel {
     background: linear-gradient(135deg, #ffffff 0%, #f8f9ff 100%);

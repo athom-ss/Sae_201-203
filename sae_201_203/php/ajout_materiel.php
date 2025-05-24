@@ -93,8 +93,10 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     try {
         // On boucle sur chaque matériel à ajouter
         for ($i = 0; $i < $nb; $i++) {
-            $sql = "INSERT INTO materiel (id_materiel, ref_materiel, designation, image_materiel, type_materiel, date_achat, etat_materiel, description_materiel) 
-                    VALUES (:id_materiel, :ref_materiel, :designation, :image_materiel, :type_materiel, :date_achat, :etat_materiel, :description_materiel)";
+            $sql = "INSERT INTO materiel (id_materiel, ref_materiel, designation, image_materiel, type_materiel, date_achat, 
+            etat_materiel, description_materiel) 
+                    VALUES (:id_materiel, :ref_materiel, :designation, :image_materiel, :type_materiel, :date_achat, :etat_materiel, 
+                    :description_materiel)";
             $stmt = $pdo->prepare($sql);
             $stmt->execute([
                 ':id_materiel' => $id_materiels[$i],
