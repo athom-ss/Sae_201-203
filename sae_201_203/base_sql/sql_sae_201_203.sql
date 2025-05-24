@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1
--- Généré le : mar. 20 mai 2025 à 15:02
+-- Généré le : sam. 24 mai 2025 à 12:02
 -- Version du serveur : 10.4.32-MariaDB
--- Version de PHP : 8.0.30
+-- Version de PHP : 8.2.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -36,21 +36,10 @@ CREATE TABLE `inscription` (
   `annee_naissance` date DEFAULT NULL,
   `adresse_postale` varchar(50) DEFAULT NULL,
   `role_personne` varchar(50) DEFAULT NULL,
-  `mot_de_passe` varchar(50) DEFAULT NULL,
+  `mot_de_passe` varchar(250) DEFAULT NULL,
   `num` int(11) DEFAULT NULL,
   `statut` varchar(15) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Déchargement des données de la table `inscription`
---
-
-INSERT INTO `inscription` (`id`, `mail`, `pseudo`, `nom`, `prenom`, `annee_naissance`, `adresse_postale`, `role_personne`, `mot_de_passe`, `num`, `statut`) VALUES
-(16, '2', '2', '2', '2', '2222-02-22', '2', 'Etudiant', '2', 2, NULL),
-(17, '3', '3', '3', '3', '3333-03-31', '3', 'Etudiant', '3', 3, NULL),
-(18, '4', '4', '4', '4', '9123-05-04', '4565', 'Administrateur', '123456', 4, NULL),
-(19, 'kobqzduigzq@gmail.com', 'HJHjhd', 'jhkhkhkj', 'Liam', '8778-05-20', 'GUKYfukygsu', 'Etudiant', 'JIHfuqhfiqf', 289689, 'attente'),
-(20, 'fefnjqfzq@gmail.com', 'hibih', 'hhihi', 'hihiuh', '2245-02-22', 'qfqfqzfqzf', 'Etudiant', '454654645', 455464, 'attente');
 
 -- --------------------------------------------------------
 
@@ -67,15 +56,17 @@ CREATE TABLE `materiel` (
   `date_achat` date DEFAULT NULL,
   `etat_materiel` varchar(50) DEFAULT NULL,
   `description_materiel` varchar(255) DEFAULT NULL,
-  `disponibilite` varchar(15) DEFAULT NULL
+  `disponibilite` varchar(15) DEFAULT NULL,
+  `image` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Déchargement des données de la table `materiel`
 --
 
-INSERT INTO `materiel` (`id_materiel`, `ref_materiel`, `designation`, `image_materiel`, `type_materiel`, `date_achat`, `etat_materiel`, `description_materiel`, `disponibilite`) VALUES
-(123456789, '123456789', '123456789', '', '123456789', '4567-03-12', 'Bon', '123456789', 'utilise');
+INSERT INTO `materiel` (`id_materiel`, `ref_materiel`, `designation`, `image_materiel`, `type_materiel`, `date_achat`, `etat_materiel`, `description_materiel`, `disponibilite`, `image`) VALUES
+(464654, '5464564', '54654564', NULL, '564456', '4654-05-04', 'Très bon', '46546546', NULL, 'uploads/materiel/6830e33ea65a4_camera_jpeg.jpeg'),
+(456465, '4564654', '5465456', NULL, '456464', '6455-05-04', 'Très bon', '5466', NULL, 'uploads/materiel/6830e59deb926_iut.jpg');
 
 -- --------------------------------------------------------
 
@@ -88,19 +79,9 @@ CREATE TABLE `reservations` (
   `id` int(11) NOT NULL,
   `datetime_debut` datetime DEFAULT NULL,
   `datetime_fin` datetime DEFAULT NULL,
-  `num_carte_reservation` int(11) DEFAULT NULL
+  `num_carte_reservation` int(11) DEFAULT NULL,
+  `statut` varchar(50) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Déchargement des données de la table `reservations`
---
-
-INSERT INTO `reservations` (`nom_salle`, `id`, `datetime_debut`, `datetime_fin`, `num_carte_reservation`) VALUES
-('B202', 1, NULL, NULL, NULL),
-('123', 2, NULL, NULL, NULL),
-('B202', 3, NULL, NULL, NULL),
-('1', 4, '2001-01-01 05:05:00', '2002-02-02 06:06:00', 2),
-('1', 5, '2008-05-05 08:08:00', '0555-05-06 04:04:00', 3);
 
 -- --------------------------------------------------------
 
@@ -116,8 +97,28 @@ CREATE TABLE `reservations_materiel` (
   `id` int(11) NOT NULL,
   `num_carte_reservation` varchar(255) DEFAULT NULL,
   `datetime_reservation` datetime DEFAULT NULL,
-  `datetime_reservation_fin` datetime DEFAULT NULL
+  `datetime_reservation_fin` datetime DEFAULT NULL,
+  `nom_reservation` varchar(50) DEFAULT NULL,
+  `prenom_reservation` varchar(50) DEFAULT NULL,
+  `statut` varchar(50) DEFAULT NULL,
+  `image` blob DEFAULT NULL,
+  `prenom` varchar(15) DEFAULT NULL,
+  `nom` varchar(15) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Déchargement des données de la table `reservations_materiel`
+--
+
+INSERT INTO `reservations_materiel` (`id_materiel`, `ref_materiel`, `designation`, `type_materiel`, `id`, `num_carte_reservation`, `datetime_reservation`, `datetime_reservation_fin`, `nom_reservation`, `prenom_reservation`, `statut`, `image`, `prenom`, `nom`) VALUES
+(1, NULL, NULL, 'camera', 26, '222222', '2001-01-01 10:10:00', '2200-02-02 02:02:00', 'liam', 'liam', 'En attente de validation', NULL, NULL, NULL),
+(2, NULL, NULL, 'micro', 27, '222222', '2001-01-01 10:10:00', '2200-02-02 02:02:00', 'liam', 'liam', 'En attente de validation', NULL, NULL, NULL),
+(3, NULL, NULL, 'manette', 28, '222222', '2001-01-01 10:10:00', '2200-02-02 02:02:00', 'liam', 'liam', 'En attente de validation', NULL, NULL, NULL),
+(4, NULL, NULL, 'casque', 29, '222222', '2001-01-01 10:10:00', '2200-02-02 02:02:00', 'liam', 'liam', 'En attente de validation', NULL, NULL, NULL),
+(1, NULL, NULL, 'camera', 30, '56464', '0511-11-05 22:05:00', '0511-11-06 05:59:00', 'gygug', 'gyugyug', 'En attente de validation', NULL, NULL, NULL),
+(2, NULL, NULL, 'micro', 31, '56464', '0511-11-05 22:05:00', '0511-11-06 05:59:00', 'gygug', 'gyugyug', 'En attente de validation', NULL, NULL, NULL),
+(3, NULL, NULL, 'manette', 32, '56464', '0511-11-05 22:05:00', '0511-11-06 05:59:00', 'gygug', 'gyugyug', 'En attente de validation', NULL, NULL, NULL),
+(4, NULL, NULL, 'casque', 33, '56464', '0511-11-05 22:05:00', '0511-11-06 05:59:00', 'gygug', 'gyugyug', 'En attente de validation', NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -127,19 +128,19 @@ CREATE TABLE `reservations_materiel` (
 
 CREATE TABLE `salles` (
   `nom_salle` varchar(15) DEFAULT NULL,
-  `type_salle` varchar(15) DEFAULT NULL
+  `type_salle` varchar(50) DEFAULT NULL,
+  `id` int(11) NOT NULL,
+  `image_salle` blob DEFAULT NULL,
+  `image` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Déchargement des données de la table `salles`
 --
 
-INSERT INTO `salles` (`nom_salle`, `type_salle`) VALUES
-('1234', 'Salle gaming'),
-('B202', 'Salle informati'),
-('1', 'Salle de classe'),
-('123', 'Salle de classe'),
-('86787', 'Salle de classe');
+INSERT INTO `salles` (`nom_salle`, `type_salle`, `id`, `image_salle`, `image`) VALUES
+('45645', 'Salle de classe', 28, NULL, NULL),
+('HJHIJH', 'Salle de classe', 29, NULL, 'uploads/materiel/6830eaf49bd60_compte.png');
 
 --
 -- Index pour les tables déchargées
@@ -164,6 +165,12 @@ ALTER TABLE `reservations_materiel`
   ADD UNIQUE KEY `id` (`id`);
 
 --
+-- Index pour la table `salles`
+--
+ALTER TABLE `salles`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- AUTO_INCREMENT pour les tables déchargées
 --
 
@@ -171,19 +178,25 @@ ALTER TABLE `reservations_materiel`
 -- AUTO_INCREMENT pour la table `inscription`
 --
 ALTER TABLE `inscription`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=35;
 
 --
 -- AUTO_INCREMENT pour la table `reservations`
 --
 ALTER TABLE `reservations`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT pour la table `reservations_materiel`
 --
 ALTER TABLE `reservations_materiel`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=34;
+
+--
+-- AUTO_INCREMENT pour la table `salles`
+--
+ALTER TABLE `salles`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

@@ -26,7 +26,7 @@
       <a href="reservation_salle.php">Réservation de salle</a>
     </nav>
     <div class="conteneur-formulaire">
-        <form action="ajout_salle.php" method="POST">
+        <form action="traitement_ajout_salle.php" method="POST" enctype="multipart/form-data">
             <h1>Ajout de salle</h1><br>
             <input id="nom_salle" type="text" name="nom_salle" placeholder="Nom de la salle"><br><br>
 
@@ -36,6 +36,11 @@
                 <option value="Salle gaming">Salle gaming</option>
                 <option value="Salle de repos">Salle de repos</option>
             </select>
+            <div class="form-group">
+                <label for="image">Image de la salle</label>
+                <input type="file" name="image" id="image" accept="image/*">
+                <small>Formats acceptés : JPG, PNG, GIF. Taille maximale : 5MB</small>
+            </div>
             <br><br><button type="submit" class="btn-valider">Valider</button> <br>
         </form>
     </div>
@@ -49,21 +54,29 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     // Vérification de l'existence des clés POST
     $nom_salle = $_POST["nom_salle"] ?? '';
     $type_salle = $_POST["type_salle"] ?? '';
+    $image = $_POST["image"] ?? '';
 
     try {
-        $sql = "INSERT INTO salles (nom_salle, type_salle) 
-                VALUES (:nom_salle, :type_salle)";
+        $sql = "INSERT INTO salles (nom_salle, type_salle, image) 
+                VALUES (:nom_salle, :type_salle, :image)";
         
         $stmt = $pdo->prepare($sql);
         $stmt->execute([
             ':nom_salle' => $nom_salle,
-            ':type_salle' => $type_salle ]);
+            ':type_salle' => $type_salle,
+            ':image' => $image
+        ]);
 
         echo "✅ Salle ajoutée avec succès !";
-        header("Location: accueil.php");
+        header("Location: ajout_salle.php");
     } catch (PDOException $e) {
         die("❌ Erreur lors de l'ajout de la salle: " . $e->getMessage());
     }
 }
+
+if (isset($_FILES['image']) && $_FILES['image']['error'] == 0) {
+  // Traitement de l'image de la salle
+}
+
 
 ?>

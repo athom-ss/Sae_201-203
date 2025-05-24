@@ -2,23 +2,6 @@
    STYLES COMMUNS UTILISÉS DANS TOUTES LES PAGES
    ========================================== */
 
-/* Variables globales */
-:root {
-    --primary-color: #2f2a86;
-    --primary-light: #1f1c66;
-    --secondary-color: #c7f7fd;
-    --text-color: #333;
-    --background-color: #f8f9fa;
-    --white: #fff;
-    --shadow-sm: 0 2px 8px rgba(47,42,134,0.08);
-    --shadow-md: 0 4px 16px rgba(47,42,134,0.10);
-    --shadow-lg: 0 8px 24px rgba(47,42,134,0.15);
-    --border-radius-sm: 8px;
-    --border-radius-md: 12px;
-    --border-radius-lg: 18px;
-    --transition: all 0.3s ease;
-}
-
 /* Reset CSS */
 * {
     margin: 0;

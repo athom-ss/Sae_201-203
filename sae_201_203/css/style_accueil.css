@@ -34,6 +34,7 @@
     font-size: 2em;
     font-weight: 600;
     margin-bottom: 16px;
+    color: white
 }
 
 .main-banner p {
@@ -336,6 +337,7 @@
     text-transform: uppercase;
     letter-spacing: 1px;
     font-family: 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+    color: white
 }
 
 .footer-column p,
@@ -417,3 +419,11 @@
     transform: scale(0.96) !important;
     box-shadow: 0 2px 8px rgba(47,37,126,0.10) !important;
 }
+
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: 22px;
+  margin-right: 18px;
+}
+

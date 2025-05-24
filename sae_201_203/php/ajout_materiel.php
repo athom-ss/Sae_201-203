@@ -59,7 +59,7 @@
 
                     <div class="form-group">
                         <label for="image">Image du matériel</label>
-                        <input type="file" id="image" name="image" accept="image/*" required>
+                        <input type="file" id="image" name="image" accept="image/*">
                         <small>Formats acceptés : JPG, PNG, GIF. Taille maximale : 5MB</small>
                     </div>
                 </div>
@@ -86,7 +86,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $date_achats = $_POST["date_achat"] ?? [];
     $etat_materiels = $_POST["etat_materiel"] ?? [];
     $description_materiels = $_POST["description_materiel"] ?? [];
-    $image_materiels = $_POST["image_materiel"] ?? []; // si tu ajoutes l'image plus tard
+    $image_materiels = $_POST["image"] ?? [];
 
     $nb = count($id_materiels); // Nombre de matériels à ajouter
 
@@ -113,6 +113,10 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     } catch (PDOException $e) {
         die("❌ Erreur lors de l'ajout : " . $e->getMessage());
     }
+}
+
+if (isset($_FILES['image']) && $_FILES['image']['error'] == 0) {
+    // Traitement de l'image du matériel
 }
 
 ?>

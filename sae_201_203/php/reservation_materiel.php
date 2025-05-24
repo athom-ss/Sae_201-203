@@ -178,33 +178,27 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     const nomInput = document.getElementById('materiel_nom');
     let selectedIds = [];
     let selectedNoms = [];
+
     cards.forEach(card => {
         card.addEventListener('click', function() {
             const id = card.getAttribute('data-id');
             const nom = card.getAttribute('data-nom');
             if (card.classList.contains('selected')) {
+                // Si déjà sélectionné, on retire la sélection
                 card.classList.remove('selected');
                 selectedIds = selectedIds.filter(x => x !== id);
                 selectedNoms = selectedNoms.filter(x => x !== nom);
             } else {
+                // Sinon, on ajoute la sélection
                 card.classList.add('selected');
                 selectedIds.push(id);
                 selectedNoms.push(nom);
             }
+            // On met à jour les champs cachés et visibles
             idsInput.value = selectedIds.join(',');
             nomInput.value = selectedNoms.join(', ');
         });
-    });
-    // Empêcher la soumission si aucun matériel sélectionné
-    document.getElementById('reservationForm').addEventListener('submit', function(e) {
-        if (!idsInput.value) {
-            nomInput.style.border = '2px solid #c62828';
-            nomInput.style.background = '#ffebee';
-            nomInput.style.color = '#c62828';
-            nomInput.value = 'Veuillez sélectionner au moins un matériel';
-            e.preventDefault();
-        }
-    });
+    });    
     </script>
 </body>
 </html>
