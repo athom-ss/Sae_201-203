@@ -1,0 +1,122 @@
+/* ==========================================
+   STYLES DES FORMULAIRES
+   UtilisÃ© dans : inscription.php, connexion.php,
+   reservation_salle.php, ajout_materiel.php,
+   ajout_salle.php, validation_salle.php
+   ========================================== */
+
+   h1 {
+    text-align: center;
+}
+
+
+.conteneur-formulaire {
+    display: flex;
+    justify-content: center;
+    margin: 3% 9%;
+}
+
+.form-modif,
+.form-ajout,
+form {
+    max-width: 650px;
+    margin: 40px auto 0 auto;
+    width: 100%;
+    background: #fff;
+    padding: 32px 24px;
+    border-radius: 12px;
+    box-shadow: 0 2px 12px rgba(47,42,134,0.08);
+}
+
+.card {
+    max-width: 650px !important;
+    margin: 40px auto 0 auto;
+}
+
+form h2 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+/* Champs du formulaire */
+label {
+    display: block;
+    margin: 10px 0 5px;
+    font-weight: bold;
+}
+
+input[type="text"],
+input[type="date"],
+input[type="number"],
+input[type="password"],
+input[type="button"],
+select,
+textarea {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+button.btn-valider {
+    background: #2F2A86;
+    color: white;
+    padding: 12px;
+    width: 100%;
+    border: none;
+    border-radius: 10px;
+    margin-top: 15px;
+    cursor: pointer;
+    font-size: 107%;
+}
+
+button.btn-valider:hover {
+    background: #1f1c66;
+}
+
+/* Lien d'inscription */
+form a {
+    display: block;
+    text-align: center;
+    margin-top: 10px;
+    color: #2F2A86;
+    font-size: 90%;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+form a:hover {
+    color: #1f1c66;
+    text-decoration: underline;
+}
+
+#insc_hauteur {
+    margin-top: 5%;
+}
+
+.btn-lien-connexion {
+    display: block;
+    background: #2F2A86;
+    color: white !important;
+    padding: 10px 0;
+    border-radius: 10px;
+    text-align: center;
+    text-decoration: none;
+    margin: 0 auto;
+    width: 100%;
+    margin-top: 10px;
+    transition: background 0.3s;
+}
+.btn-lien-connexion:hover {
+    background: #1f1c66;
+}
+
+.btn-primary, .btn.btn-primary {
+    background: #2F2A86 !important;
+    border-color: #2F2A86 !important;
+    color: #fff !important;
+}
+.btn-primary:hover, .btn.btn-primary:hover {
+    background: #1f1c66 !important;
+    border-color: #1f1c66 !important;
+}

@@ -1,0 +1,233 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+/* HEADER */
+header {
+    background-color: #2F2A86;
+    padding: 0.7%;
+    width: 100%;
+}
+
+/* LOGO + COMPTE */
+.images-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.logo_univ img {
+    margin-top: 0.5%;
+    width: 16%;
+}
+
+.img_compte img {
+    width: 48px;
+    display: block;
+}
+
+/* NAVBAR */
+.navbar {
+    justify-content: center;
+    display: flex; /*CENTRE LES ELEMENTS*/
+    gap: 6%;
+    background-color: #26236b;
+    justify-content: center;
+}
+
+.navbar a {
+    color: white;
+    font-size: 130%;
+    text-decoration: none;
+    transition: background-color 0.8s, color 0.8s;
+    padding: 0.5% 1.7%;
+    border-radius: 0.7em;
+}
+
+/*SURVOL DES BOUTONS*/
+.navbar a:hover {
+    background-color: white;
+    color: #2F2A86;
+}
+
+.footer {
+    background-color: #2f2a86;
+    color: white;
+    padding: 30px 8%;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 40px;
+    justify-content: space-between;
+    font-size: 0.9em;
+}
+
+.logo-footer {
+    height: 40px !important;
+    width: auto !important;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.footer-column {
+    flex: 1 1 200px;
+    min-width: 200px;
+}
+
+.footer-column h4 {
+    margin-bottom: 10px;
+    font-size: 1.1em;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-family: 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+    color: white;
+}
+
+.footer-column p,
+.footer-column a {
+    display: block;
+    margin: 5px 0;
+    color: white;
+    text-decoration: none;
+}
+
+.footer-column a:hover {
+    text-decoration: underline;
+}
+
+.footer-bottom {
+    background-color: #221f6a;
+    color: #ddd;
+    text-align: center;
+    padding: 20px 10px;
+    font-size: 0.85em;
+}
+
+.footer-bottom-links {
+    margin-bottom: 8px;
+}
+
+.footer-bottom-links a {
+    color: #ddd;
+    text-decoration: none;
+    margin: 0 8px;
+}
+
+.footer-bottom-links a:hover {
+    text-decoration: underline;
+}
+
+.footer-bottom-links span {
+    color: #888;
+}
+
+.footer-column img {
+    display: block;
+    margin: 6px 0;
+    width: 24px; /* ou la taille que tu préfères */
+    height: auto;
+}
+
+/* Bouton "Mes réservations"*/
+.boutton {
+    background-color: #2f257e !important;
+    color: white !important;
+    padding: 0.5rem 1.5rem !important;
+    border: none !important;
+    border-radius: 6px !important;
+    font-size: 0.9em !important;
+    cursor: pointer !important;
+    transition: all 0.2s ease !important;
+    text-decoration: none !important;
+    text-align: center !important;
+    margin-top: 8px !important;
+    display: inline-block !important;
+    position: relative !important;
+    z-index: 1 !important;
+}
+
+.boutton:hover {
+    background-color: #221f6a !important;
+    transform: scale(1.06) !important;
+    box-shadow: 0 4px 16px rgba(47,37,126,0.15) !important;
+}
+
+.boutton:active {
+    transform: scale(0.96) !important;
+    box-shadow: 0 2px 8px rgba(47,37,126,0.10) !important;
+}
+
+.boutton.pressed, .boutton_carte.pressed {
+    transform: scale(0.96) !important;
+    box-shadow: 0 2px 8px rgba(47,37,126,0.10) !important;
+}
+
+.btn-deconnexion {
+    background-color: #2f2a86 !important;
+    color: white !important;
+    padding: 0.5rem 1.5rem !important;
+    border: none !important;
+    border-radius: 6px !important;
+    font-size: 0.9em !important;
+    cursor: pointer !important;
+    transition: all 0.2s ease !important;
+    text-decoration: none !important;
+    text-align: center !important;
+    display: inline-block !important;
+    position: relative !important;
+    z-index: 1 !important;
+}
+
+.btn-deconnexion:hover {
+    background-color: #ffffff !important;
+    color: #2f2a86 !important;
+    transform: scale(1.06) !important;
+    box-shadow: 0 4px 16px rgba(47,37,126,0.15) !important;
+}
+
+.btn-deconnexion:active {
+    transform: scale(0.96) !important;
+    box-shadow: 0 2px 8px rgba(47,37,126,0.10) !important;
+}
+
+
+@media screen and (max-width: 768px) {
+    .btn-deconnexion {
+        padding: 6px 16px;
+        font-size: 0.9em;
+        margin-right: 4px;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .btn-deconnexion {
+        padding: 4px 12px;
+        font-size: 0.8em;
+        margin-right: 2px;
+    }
+}
+  
+@media screen and (max-width: 768px) {
+    .img_compte img {
+        height: 40px;
+        width: 40px;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .img_compte img {
+        height: 32px;
+        width: 32px;
+    }
+}
