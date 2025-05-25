@@ -6,7 +6,7 @@
     <link rel="stylesheet" href="../css/style.css?v=<?= time(); ?>">
     <link rel="stylesheet" href="../css/style_accueil.css?v=<?= time(); ?>">
     <link rel="stylesheet" href="../css/header_nav_footer.css?v=<?= time(); ?>">
-    <title>Accueil du site</title>
+    <title>Accueil du site (Etudiant)</title>
 </head>
 
 <header>
