@@ -1,2 +1,0 @@
-Le dossier uploads doit se trouver dans le dossier sae_201_203 avec les autres dossiers php, css, etc
-A cause du nombre d'image, il n'a pas pu être ajouté dans le bon dossier directement sur GitHub.
