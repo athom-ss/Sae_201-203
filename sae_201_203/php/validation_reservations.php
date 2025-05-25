@@ -68,10 +68,12 @@ $reservations_salle = $stmt->fetchAll(PDO::FETCH_ASSOC);
 </header>
 <body>
     <nav class="navbar">
-      <a href="reservation_materiel.php">Réservation de matériel</a>
-      <a href="ajout_materiel.php">Ajout de matériel</a>
-      <a href="ajout_salle.php">Ajout de salle</a>
-      <a href="reservation_salle.php">Réservation de salle</a>
+        <a href="ajout_materiel.php">Ajout de matériel</a>
+        <a href="ajout_salle.php">Ajout de salle</a>
+        <a href="eleves_attente.php">Gestion des élèves</a>
+        <a href="validation_reservations.php">Valider les réservations</a>
+        <a href="statistiques.php">Statistiques</a>
+        <a href="afficher_tout.php">Afficher toutes les informations</a>
     </nav>
 
     <h1>Réservations en attente de validation</h1>
