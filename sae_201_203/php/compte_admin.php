@@ -1,11 +1,11 @@
 <?php   // METTRE PHP AVANT POUR RECUPERER LES INFORMATIONS UTILISATEUR
 session_start();
-require_once "connexion_base.php"; // Cette ligne doit absolument être présente
+require_once "connexion_base.php";
 
-// Debug
+
 error_log("Accès à compte.php. Session: ".print_r($_SESSION, true));
 
-// Vérification plus complète de la session
+// Vérification de la session active
 if (!isset($_SESSION['user']) || !isset($_SESSION['user']['id'])) {
     error_log("Redirection vers connexion.php - Session user ou ID non trouvé");
     $_SESSION['erreur'] = "Session expirée ou invalide";
@@ -13,7 +13,7 @@ if (!isset($_SESSION['user']) || !isset($_SESSION['user']['id'])) {
     exit;
 }
 
-// Récupération des infos de l'utilisateur depuis la table inscription
+// Récupération des infos de l'utilisateur
 $id = $_SESSION['user']['id'];
 
 try {
@@ -41,7 +41,7 @@ try {
 
 
 
-// Récupération des infos de l'utilisateur depuis la table reservation_materiel
+// Récupération des infos de l'utilisateur
 $id = $_SESSION['user']['id'];
 
 try {
