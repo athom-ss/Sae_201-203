@@ -70,21 +70,6 @@ CREATE TABLE `materiel` (
 -- Déchargement des données de la table `materiel`
 --
 
-INSERT INTO `materiel` (`id_materiel`, `ref_materiel`, `designation`, `image_materiel`, `type_materiel`, `date_achat`, `etat_materiel`, `description_materiel`, `disponibilite`, `image`) VALUES
-(1, '0001', '0001', NULL, 'Micro', '2023-09-15', 'Très bonne état', 'Micro rouge', 'Disponible', 'uploads/materiel/20230505_100614.jpg'),
-(2, '0002', '0002', NULL, 'Projecteur', '2023-09-15', 'Très bonne état', 'Video projecteur', 'Disponible', 'uploads/materiel/20230505_104109.jpg'),
-(3, '0003', '0003', NULL, 'Manette', '2023-09-15', 'Très bonne état', 'Manette Xbox', 'Disponible', 'uploads/materiel/20230505_104425.jpg'),
-(4, '0004', '0004', NULL, 'Casque', '2023-09-15', 'Très bonne état', 'Casque Steelseries arctis avec son de qualité', 'Disponible', 'uploads/materiel/20230505_105442.jpg'),
-(5, '0005', '0005', NULL, 'Camera', '2023-09-15', 'Très bonne état', 'Caméra', 'Disponible', 'uploads/materiel/20230505_105700.jpg'),
-(6, '0006', '0006', NULL, 'Trepied', '2023-09-15', 'Très bonne état', 'Trépied caméra', 'Disponible', 'uploads/materiel/20230505_110146.jpg'),
-(7, '0007', '0007', NULL, 'Casque', '2023-09-15', 'Très bonne état', 'Casque virtuel blanc', 'Disponible', 'uploads/materiel/IMG_0007.JPG'),
-(8, '0008', '0008', NULL, 'Drone', '2023-09-15', 'Très bonne état', 'Drone', 'Disponible', 'uploads/materiel/P1018442.JPG'),
-(9, '0009', '0009', NULL, 'Trepied', '2023-09-15', 'Très bonne état', 'Trépied tous support', 'Disponible', 'uploads/materiel/P1018448.JPG'),
-(10, '0010', '0010', NULL, 'Tablette', '2023-09-15', 'Très bonne état', 'Tablete de qualité multitache', 'Disponible', 'uploads/materiel/P1018469.JPG'),
-(11, '0011', '0011', NULL, 'Camera', '2023-09-15', 'Très bonne état', 'Camera qui permet de filmer à 360 degrés', 'Disponible', 'uploads/materiel/P1018480.JPG'),
-(12, '0012', '0012', NULL, 'Cable', '2023-09-15', 'Très bonne état', 'Cable permettant de relier le casque virtuel au pc', 'Disponible', 'uploads/materiel/P1018495.JPG'),
-(13, '0013', '0013', NULL, 'Casque', '2023-09-15', 'Très bonne état', 'Casque virtuel noir', 'Disponible', 'uploads/materiel/P1018552.JPG'),
-(32, 'casque', '', NULL, 'casque', '2025-05-31', 'Très bon', 'Lozdiifj fjeffefef', NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -153,10 +138,6 @@ CREATE TABLE `salles` (
 --
 -- Déchargement des données de la table `salles`
 --
-
-INSERT INTO `salles` (`nom_salle`, `type_salle`, `id`, `image_salle`, `image`, `informations`, `description_salle`) VALUES
-('212', 'Salle gaming', 1, NULL, 'uploads/materiel/Salle212.jpg', NULL, 'La salle 212 est une salle de gaming qui permet de faire de la 3d ou de l’hébergement de site'),
-('138', 'Salle gaming', 2, NULL, 'uploads/materiel/Salle138.JPG', NULL, 'La salle 138 est une salle de gaming qui permet de faire de la 3d ou de l’hébergement de site');
 
 --
 -- Index pour les tables déchargées
