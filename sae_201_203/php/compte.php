@@ -11,7 +11,6 @@ if (!isset($_SESSION['user']) || !isset($_SESSION['user']['id'])) {
     exit;
 }
 
-// Récupération des infos utilisateur
 $id = $_SESSION['user']['id'];
 
 try {
@@ -36,7 +35,7 @@ try {
     exit;
 }
 
-// Récupération des réservations de salles de l'utilisateur via num de carte
+// Récupération des réservations de salles de l'utilisateur via le num de carte
 $reservations = [];
 
 try {
@@ -56,7 +55,7 @@ try {
     $sql = "SELECT * FROM reservations_materiel WHERE num_carte_reservation = :num";
     $stmt = $pdo->prepare($sql);
     $stmt->execute([':num' => $user['num']]);
-    $reservations_materiel = $stmt->fetchAll(PDO::FETCH_ASSOC);  // ❌ Mauvaise variable ici !
+    $reservations_materiel = $stmt->fetchAll(PDO::FETCH_ASSOC);
 } catch (PDOException $e) {
     error_log("Erreur lors de la récupération des réservations : " . $e->getMessage());
     $reservations_materiel = [];
