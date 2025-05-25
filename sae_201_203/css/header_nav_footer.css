@@ -40,7 +40,7 @@ header {
 .navbar {
     justify-content: center;
     display: flex; /*CENTRE LES ELEMENTS*/
-    gap: 4%;
+    gap: 1%;
     background-color: #26236b;
     justify-content: center;
 }
