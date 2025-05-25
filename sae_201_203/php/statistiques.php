@@ -169,8 +169,32 @@ session_start();
 
 
     
-<script src="../js/statistiques.js"></script>
+<!-- Génération des variables JS avec PHP -->
+<script>
+    const sallesData = {
+        labels: <?= json_encode(array_column($top_salles, 'nom_salle')) ?>,
+        datasets: [{
+            label: 'Nombre de réservations',
+            data: <?= json_encode(array_column($top_salles, 'nombre_reservations')) ?>,
+            backgroundColor: 'rgba(47, 42, 134, 0.8)',
+            borderColor: 'rgba(47, 42, 134, 1)',
+            borderWidth: 1
+        }]
+    };
 
+    const materielData = {
+        labels: <?= json_encode(array_column($top_materiel, 'type_materiel')) ?>,
+        datasets: [{
+            label: 'Nombre de réservations',
+            data: <?= json_encode(array_column($top_materiel, 'nombre_reservations')) ?>,
+            backgroundColor: 'rgba(47, 42, 134, 0.8)',
+            borderColor: 'rgba(47, 42, 134, 1)',
+            borderWidth: 1
+        }]
+    };
+</script>
+<!-- Inclusion du script JS séparé -->
+<script src="../js/statistiques.js"></script>
     
 </body>
 </html> 
