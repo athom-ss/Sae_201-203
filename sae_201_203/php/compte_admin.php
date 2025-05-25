@@ -108,7 +108,7 @@ try {
                 <div class="pseudo"><?= htmlspecialchars($user['pseudo']) ?></div>
                 <div class="id">Votre ID : <?= htmlspecialchars($user['id']) ?></div>
                 <div class="role">Statut : <?= htmlspecialchars($user['role_personne']) ?></div>
-                <br><br><a href="../deconnexion.php" class="btn bouton-deconnexion">Se déconnecter</a>
+                <br><br><a href="../connexion.php" class="btn bouton-deconnexion">Se déconnecter</a>
             </div>
             <!-- Partie détaillée avec toutes les informations de l'utilisateur sur la droite -->
             <div class="fiche-details">
