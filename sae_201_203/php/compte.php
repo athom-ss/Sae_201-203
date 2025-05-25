@@ -106,7 +106,7 @@ try {
                 <div class="id">Votre ID : <?= htmlspecialchars($user['id']) ?></div>
                 <div class="role">Statut : <?= htmlspecialchars($user['role_personne']) ?></div>
                 <div class="groupe">Groupe : <?= htmlspecialchars($user['groupe']) ?></div>
-                <br><br><a href="../connexion.php" class="btn bouton-deconnexion">Se déconnecter</a>
+                <br><br><a href="deconnexion.php" class="btn bouton-deconnexion">Se déconnecter</a>
             </div>
 
             <div class="fiche-details">
