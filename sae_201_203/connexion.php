@@ -14,15 +14,14 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $mdp = $_POST['mdp'] ?? '';
 
     try {
-        $sql = "SELECT * FROM inscription WHERE mail = :mail AND mot_de_passe = :mdp";
+        $sql = "SELECT * FROM inscription WHERE mail = :mail";
         $stmt = $pdo->prepare($sql);
         $stmt->execute([
-            ':mail' => $mail,
-            ':mdp' => $mdp
+            ':mail' => $mail
         ]);
         $utilisateur = $stmt->fetch(PDO::FETCH_ASSOC);
 
-        if ($utilisateur) {
+        if ($utilisateur && password_verify($mdp, $utilisateur['mot_de_passe'])) {
             // Initialisation de la session
             $_SESSION = array();
             $_SESSION['user'] = [
