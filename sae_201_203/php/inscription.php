@@ -15,6 +15,8 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $statut = ($role_personne !== 'Administrateur') ? 'attente' : '';
     $groupe = $_POST["groupe"] ?? '';
 
+    $mdp_hash = password_hash($mdp, PASSWORD_DEFAULT);
+
     try {
         $sql = "INSERT INTO inscription (mail, pseudo, nom, prenom, annee_naissance, adresse_postale, role_personne, mot_de_passe, num, statut, groupe) 
                 VALUES (:mail, :pseudo, :nom, :prenom, :annee_naissance, :adresse, :role_personne, :mdp, :num, :statut, :groupe)";
@@ -27,7 +29,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             ':annee_naissance' => $annee_naissance,
             ':adresse' => $adresse,
             ':role_personne' => $role_personne,
-            ':mdp' => $mdp,
+            ':mdp' => $mdp_hash,
             ':num' => $num,
             ':statut' => $statut,
             ':groupe' => $groupe
@@ -38,7 +40,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         $stmt->execute([':mail' => $mail]);
         $utilisateur = $stmt->fetch(PDO::FETCH_ASSOC);
 
-        if ($utilisateur && $utilisateur['mot_de_passe'] === $mdp) {
+        if ($utilisateur && password_verify($mdp, $utilisateur['mot_de_passe'])) {
             // Création de la session avec les infos de l'utilisateur
             $_SESSION['user'] = [
                 'id' => $utilisateur['id'],
