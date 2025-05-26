@@ -89,13 +89,17 @@ try {
   </div>
 </header>
 <body>
-<nav class="navbar">
-        <a href="ajout_materiel.php">Ajout de matériel</a>
-        <a href="ajout_salle.php">Ajout de salle</a>
-        <a href="eleves_attente.php">Gestion des élèves</a>
-        <a href="validation_reservations.php">Valider les réservations</a>
-        <a href="statistiques.php">Statistiques</a>
-        <a href="afficher_tout.php">Afficher toutes les informations</a>
+    <nav class="navbar">
+        <?php if ($user['role_personne'] == 'Administrateur') { ?>
+            <a href="ajout_materiel.php">Ajout de matériel</a>
+            <a href="ajout_salle.php">Ajout de salle</a>
+            <a href="eleves_attente.php">Gestion des élèves</a>
+            <a href="validation_reservations.php">Valider les réservations</a>
+            <a href="statistiques.php">Statistiques</a>
+            <a href="afficher_tout.php">Afficher toutes les informations</a>
+        <?php } else { ?>
+            <a href="agent_reservations.php">Voir toutes les réservations</a>
+        <?php } ?>
     </nav>
 
     <div class="conteneur-compte">
